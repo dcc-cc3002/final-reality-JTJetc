@@ -7,6 +7,8 @@ class CharacterTest extends munit.FunSuite {
   var weakcharacter: Character = _
   var weakcharacter2: Character = _
   var weakcharacter3: Character = _
+  var AliveParty: Party = _
+  var DeathParty: Party = _
 
   override def beforeEach(context: BeforeEach): Unit = {
     trainer = new Character("TrainerOne", 100, 50, 32.5, "Paladin")
@@ -15,6 +17,9 @@ class CharacterTest extends munit.FunSuite {
     weakcharacter = new Character("WeakcharacterOne", 100, 30, "Ninja")
     weakcharacter2 = new Character("WeakcharacterTwo", 100, 32.5, "WhiteMage",1)
     weakcharacter3 = new Character("WeakcharacterThree", 100, 10, "WhiteMage",1)
+    AliveParty = new Party(trainer,trainer2)
+    AliveParty.add(magictrainer)
+    DeathParty = new Party(new Character(profession = "Warrior"),new Character(profession = "Warrior"))
   }
   test("Character constructor checks"){
     assertEquals(trainer.name,"TrainerOne")
@@ -37,5 +42,9 @@ class CharacterTest extends munit.FunSuite {
     assertEquals(weakcharacter2.defense,0)
     assertEquals(weakcharacter3.weight,10.0)
     assertEquals(weakcharacter3.defense,0)
+  }
+  test("Party Status"){
+    assertEquals(AliveParty.isAlive(),true)
+    assertEquals(DeathParty.isAlive(),false)
   }
 }
