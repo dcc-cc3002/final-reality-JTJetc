@@ -5,4 +5,5 @@ trait Units {
   var life: Int
   var defense: Int
   val weight: Double
+  def isAlive: Boolean
 }

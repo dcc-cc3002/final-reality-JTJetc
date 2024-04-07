@@ -44,7 +44,7 @@ class CharacterTest extends munit.FunSuite {
     assertEquals(weakcharacter3.defense,0)
   }
   test("Party Status"){
-    assertEquals(AliveParty.isAlive(),true)
-    assertEquals(DeathParty.isAlive(),false)
+    assertEquals(AliveParty.isAlive,true)
+    assertEquals(DeathParty.isAlive,false)
   }
 }
