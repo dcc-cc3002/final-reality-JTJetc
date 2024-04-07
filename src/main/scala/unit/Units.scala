@@ -1,6 +1,6 @@
 package unit
 
-trait Unit {
+trait Units {
   val name: String
   var life: Int
   var defense: Int
