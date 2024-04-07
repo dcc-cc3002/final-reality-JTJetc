@@ -2,6 +2,7 @@ package unit
 
 class CharacterTest extends munit.FunSuite {
   var trainer: Character = _
+  var trainer2: Character = _
   var magictrainer: Character = _
   var weakcharacter: Character = _
   var weakcharacter2: Character = _
@@ -9,10 +10,11 @@ class CharacterTest extends munit.FunSuite {
 
   override def beforeEach(context: BeforeEach): Unit = {
     trainer = new Character("TrainerOne", 100, 50, 32.5, "Paladin")
-    magictrainer = new Character("TrainerTwo", 20, 5, 25, "BlackMage", 1000)
-    weakcharacter = new Character("TrainerOne", 100, 30, "Ninja")
-    weakcharacter2 = new Character("TrainerOne", 100, 32.5, "WhiteMage",1)
-    weakcharacter3 = new Character("TrainerOne", 100, 10, "WhiteMage",1)
+    trainer2 = new Character("TrainerTwo", 100, 50, 50, "Warrior")
+    magictrainer = new Character("magic", 20, 5, 25, "BlackMage", 1000)
+    weakcharacter = new Character("WeakcharacterOne", 100, 30, "Ninja")
+    weakcharacter2 = new Character("WeakcharacterTwo", 100, 32.5, "WhiteMage",1)
+    weakcharacter3 = new Character("WeakcharacterThree", 100, 10, "WhiteMage",1)
   }
   test("Character constructor checks"){
     assertEquals(trainer.name,"TrainerOne")
@@ -21,7 +23,9 @@ class CharacterTest extends munit.FunSuite {
     assertEquals(trainer.weight,32.5)
     assertEquals(trainer.profession,"Paladin")
     assertEquals(trainer.mana,0)
-    assertEquals(magictrainer.name,"TrainerTwo")
+    assertEquals(trainer2.weight,50.0)
+    assertEquals(trainer2.heldweapon,null)
+    assertEquals(magictrainer.name,"magic")
     assertEquals(magictrainer.life,20)
     assertEquals(magictrainer.defense,5)
     assertEquals(magictrainer.weight,25.0)
