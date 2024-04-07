@@ -6,7 +6,7 @@ class CharacterTest extends munit.FunSuite {
 
   override def beforeEach(context: BeforeEach): Unit = {
     trainer = new Character("TrainerOne",100,50,32.5,"Paladin")
-    magictrainer = new Character("TrainerTwo",20,5,25,"BlackMage",1000)
+    magictrainer = new Character("TrainerTwo",20,5,25.0,"BlackMage",1000)
   }
   test("Character constructor checks"){
     assertEquals(trainer.name,"TrainerOne")
@@ -17,7 +17,7 @@ class CharacterTest extends munit.FunSuite {
     assertEquals(magictrainer.name,"TrainerTwo")
     assertEquals(magictrainer.life,20)
     assertEquals(magictrainer.defense,5)
-    assertEquals(magictrainer.weight,25)
+    assertEquals(magictrainer.weight,25.0)
     assertEquals(magictrainer.profession,"BlackMage")
     assertEquals(magictrainer.mana,1000)
   }

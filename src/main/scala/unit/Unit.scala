@@ -4,5 +4,5 @@ trait Unit {
   val name: String
   var life: Int
   var defense: Int
-  val weight: Float
+  val weight: Double
 }
