@@ -2,7 +2,7 @@ package unit
 
 class Character(val name: String = "Unknown",var life: Int = 0,var defense: Int = 0,val weight: Double = 0.1,val profession: String, var mana:Int=0) extends AbstractCharacter {
   def this(x: String, l: Int, w: Double, p: String) = {
-    this(x, l, defense, w, p)
+    this(x, l, 0, w, p)
   }
 
   def this(x: String, l: Int, w: Int, p: String) = {
@@ -14,7 +14,7 @@ class Character(val name: String = "Unknown",var life: Int = 0,var defense: Int 
   }
 
   def this(x: String, l: Int, w: Double, p: String, m: Int) = {
-    this(x, l, defense, w, p, m)
+    this(x, l, 0, w, p, m)
   }
 
   def this(x: String, l: Int, w: Int, p: String, m: Int) = {
