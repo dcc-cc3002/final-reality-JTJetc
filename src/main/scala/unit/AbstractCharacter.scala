@@ -9,4 +9,5 @@ abstract class AbstractCharacter extends ICharacter {
     if (life > 0) true
     else false
   }
+
 }
