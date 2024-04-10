@@ -8,11 +8,4 @@ class MagicCharacter(val name: String = "Unknown", var life: Int = 0, var defens
     this(x, l, 0, w, p, m)
   }
 
-  def this(x: String, l: Int, w: Int, p: Profession, m: Int) = {
-    this(x, l, w.toDouble, p, m)
-  }
-
-  def this(x: String, l: Int, d: Int, w: Int, p: Profession, m: Int) = {
-    this(x, l, d, w.toDouble, p, m)
-  }
 }
