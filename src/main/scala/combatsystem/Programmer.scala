@@ -1,11 +1,8 @@
 package combatsystem
 import unit.{Enemy, IParty}
+import scala.collection.mutable.ListBuffer
 
 class Programmer(var party: IParty,
-                 var enemy1: Enemy,
-                 var enemy2: Enemy,
-                 var enemy3: Enemy,
-                 var enemy4: Enemy,
-                 var enemy5: Enemy) {
-
+                 val enemies: ListBuffer[Enemy]) {
+ var k : Int = 3
 }
