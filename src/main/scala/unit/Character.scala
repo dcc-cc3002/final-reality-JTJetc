@@ -35,6 +35,7 @@ class Character(val name: String = "Unknown",var life: Int = 0,var defense: Int 
   }
 
   def setActionBar(k: Int): Unit = {
-    actionbar += k
+    if(k != 0) actionbar += k
+    else actionbar = 0
   }
 }

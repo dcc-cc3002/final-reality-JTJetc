@@ -36,6 +36,7 @@ class MagicCharacter(val name: String = "Unknown", var life: Int = 0, var defens
   }
 
   def setActionBar(k: Int): Unit = {
-    actionbar += k
+    if(k != 0) actionbar += k
+    else actionbar = 0
   }
 }

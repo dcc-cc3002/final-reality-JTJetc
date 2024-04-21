@@ -36,6 +36,7 @@ class Programmer(var party: IParty, val enemies: ListBuffer[Enemy]) {
  def getTurn : Units = {
   readyList.sortBy(_.getActionBar) //ordered from left to right in ascending order
   val result : Units = readyList(-1)
+  result.setActionBar(0)
   readyList.remove(-1)
   result
  }

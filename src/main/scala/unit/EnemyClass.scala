@@ -28,6 +28,7 @@ class EnemyClass(val name: String,var life:Int, var damage:Int, var defense:Int,
   }
 
   def setActionBar(k: Int): Unit = {
-    actionbar += k
+    if(k != 0) actionbar += k
+    else actionbar = 0
   }
 }
