@@ -5,5 +5,5 @@ package unit
  * Used by [[unit.EnemyClass]]
  */
 trait Enemy extends Units{
-var damage: Int
+  var damage: Int
 }

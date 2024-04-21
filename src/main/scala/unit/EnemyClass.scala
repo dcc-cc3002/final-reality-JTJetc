@@ -19,4 +19,15 @@ class EnemyClass(val name: String,var life:Int, var damage:Int, var defense:Int,
     if (life > 0) true
     else false
   }
+
+  private var actionbar = 0
+  private var maxActionbar: Double = weight
+
+  def getActionBar: Double = {
+    actionbar - maxActionbar
+  }
+
+  def setActionBar(k: Int): Unit = {
+    actionbar += k
+  }
 }
