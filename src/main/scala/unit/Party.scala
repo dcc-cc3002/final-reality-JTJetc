@@ -24,9 +24,9 @@ class Party(var member1: ICharacter = new DummyCharacter, var member2: ICharacte
    * @param who The character to be added to the party.
    */
   def add(who: ICharacter): Unit = {
-    if(member1.profession==null)member1=who
-    else if(member2.profession==null)member2=who
-    else if(member3.profession==null)member3=who
+    if (member1.profession == null) member1 = who
+    else if (member2.profession == null) member2 = who
+    else if (member3.profession == null) member3 = who
   }
 
   /** Determines if the party is alive.
@@ -37,5 +37,11 @@ class Party(var member1: ICharacter = new DummyCharacter, var member2: ICharacte
    */
   def isAlive: Boolean = {
     member1.isAlive || member2.isAlive || member3.isAlive
+  }
+
+  def step(k: Int): Unit = {
+    if(member1.profession != null) member1.setActionBar(k)
+    if(member2.profession != null) member2.setActionBar(k)
+    if(member3.profession != null) member3.setActionBar(k)
   }
 }

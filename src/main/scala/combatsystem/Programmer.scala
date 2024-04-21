@@ -16,4 +16,9 @@ class Programmer(var party: IParty, val enemies: ListBuffer[Enemy]) {
   }
  }
 
+ def step() : Unit = {
+  party.step(k)
+  for(n <- enemies) n.setActionBar(k)
+ }
+
 }
