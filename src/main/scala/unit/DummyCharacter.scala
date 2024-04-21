@@ -15,4 +15,8 @@ package unit
  */
 class DummyCharacter extends Character(profession = null) {
   life = 0
+
+  override def getActionBar: Double = {
+    -1
+  }
 }
