@@ -44,7 +44,7 @@ class CombatTest extends munit.FunSuite {
   }
   test("Programmer Turns Tests"){
     TestTurns.step()
-    TestTurns.anyTurn()
-    TestTurns.getTurn()
+    TestTurns.anyTurn
+    TestTurns.getTurn
   }
 }

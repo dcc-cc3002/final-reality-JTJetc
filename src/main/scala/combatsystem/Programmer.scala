@@ -5,7 +5,7 @@ import scala.collection.mutable.ListBuffer
 
 class Programmer(var party: IParty, val enemies: ListBuffer[Enemy]) {
  protected var k: Int = 3
- private var readyList : ListBuffer[Units] = ListBuffer()
+ private val readyList : ListBuffer[Units] = ListBuffer()
 
  def add(who: ICharacter): Unit = {
   party.add(who)
@@ -22,7 +22,8 @@ class Programmer(var party: IParty, val enemies: ListBuffer[Enemy]) {
   for(n <- enemies) n.setActionBar(k)
  }
 
- def anyTurn() : Boolean = {
+ def anyTurn : Boolean = {
+  readyList.empty
   if(party.member1.getActionBar > 0) readyList.addOne(party.member1)
   if(party.member2.getActionBar > 0) readyList.addOne(party.member2)
   if(party.member3.getActionBar > 0) readyList.addOne(party.member3)
@@ -30,6 +31,13 @@ class Programmer(var party: IParty, val enemies: ListBuffer[Enemy]) {
 
   if(readyList.nonEmpty) true
   else false
+ }
+
+ def getTurn : Units = {
+  readyList.sortBy(_.getActionBar) //ordered from left to right in ascending order
+  val result : Units = readyList(-1)
+  readyList.remove(-1)
+  result
  }
 
 }
