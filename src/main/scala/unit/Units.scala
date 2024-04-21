@@ -17,4 +17,7 @@ trait Units {
    * @return If the entity is alive
    */
   def isAlive: Boolean
+
+  def getActionBar: Double
+  def setActionBar(k : Int) : Unit
 }

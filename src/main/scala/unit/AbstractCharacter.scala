@@ -17,7 +17,7 @@ abstract class AbstractCharacter extends ICharacter {
    *
    * Starts by default empty, meaning no held weapon.
    */
-  var heldweapon: Weapon = _
+  var heldweapon: Weapon = null
 
   def isAlive: Boolean = {
     if (life > 0) true

@@ -24,4 +24,17 @@ class Character(val name: String = "Unknown",var life: Int = 0,var defense: Int 
     this(x, l, 0, w, p)
   }
 
+  private var actionbar = 0
+  private var maxActionbar: Double = {
+    if (heldweapon != null) weight + (heldweapon.weight / 2)
+    else weight
+  }
+
+  def getActionBar: Double = {
+    actionbar - maxActionbar
+  }
+
+  def setActionBar(k: Int): Unit = {
+    actionbar += k
+  }
 }
