@@ -10,7 +10,7 @@ import weapon.Weapon
  *
  * @author Javier Torres
  * @since 1.0.0
- * @version 1.0.0
+ * @version 1.0.1
  */
 abstract class AbstractCharacter extends ICharacter {
   /** The weapon this character is holding.

@@ -1,5 +1,8 @@
 package unit
 
+/** Trait mainly used for type checking.
+ * Used by [[unit.Party]]
+ */
 trait IParty {
   var member1 : ICharacter
   var member2 : ICharacter

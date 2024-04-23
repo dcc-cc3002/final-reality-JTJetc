@@ -1,10 +1,10 @@
 # Final Reality
 
-Final Reality is a simplified clone of the renowned game, Final Fantasy. Its main purpose is to
+>Final Reality is a simplified clone of the renowned game, Final Fantasy. Its main purpose is to
 serve as an educational tool, teaching foundational programming concepts.
 
-This README is yours to complete it. Take this opportunity to describe your contributions, the
-design decisions you've made, and any other information you deem necessary.
+*This README is yours to complete it. Take this opportunity to describe your contributions, the
+design decisions you've made, and any other information you deem necessary.*
 
 ## 1° Assigment
 ### Partial Assigment 1
@@ -20,7 +20,13 @@ is alive, and can add members up to three.
 constructor, which will be easier to compare later.
 - Weapon trait for common attributes, and two abstract classes for common and magic weapons with magic damage.
 - Tests with munit.FunSuite, mainly of constructors, making sure to have good coverage.
-
+### Partial Assigment 2
+- Programmer class in charge to manage actionbar changes and determining which enemy or character can get a turn
+- Programmer can add and remove units (max 3 party members, max 5 enemies per battle)
+- Programmer for now has an arbitrary amount k to increase the actionbar each step
+- They ideal combat manager will step the programmer, then ask if any member can perform a turn, and if true,
+perform an action with returned unit, otherwise keep stepping to increase actionbars
+- Maybe one programmer object can be used for each different battle, making sure to destroy the leftover object
 
 This project is licensed under the
 [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).

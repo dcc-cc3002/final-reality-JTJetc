@@ -12,7 +12,7 @@ package unit
  *
  * @author Javier Torres
  * @since 1.0.0
- * @version 1.0.0
+ * @version 1.0.2
  */
 class Party(var member1: ICharacter = new DummyCharacter, var member2: ICharacter = new DummyCharacter,var member3: ICharacter = new DummyCharacter) extends IParty {
 
@@ -39,12 +39,20 @@ class Party(var member1: ICharacter = new DummyCharacter, var member2: ICharacte
     member1.isAlive || member2.isAlive || member3.isAlive
   }
 
+  /** Changes the actionbar of each party member by a k amount
+   *
+   * @param k Amount to change the actionbar
+   */
   def step(k: Int): Unit = {
     member1.setActionBar(k)
     member2.setActionBar(k)
     member3.setActionBar(k)
   }
 
+  /** Removes a specific member from the party
+   *
+   * @param who The Character to remove from the party
+   */
   def remove(who:ICharacter):Unit={
     if(who==member3) member3 = new DummyCharacter
     if(who==member2) member2 = new DummyCharacter
