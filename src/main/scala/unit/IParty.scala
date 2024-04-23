@@ -6,4 +6,6 @@ trait IParty {
   var member3 : ICharacter
   def add(who:ICharacter): Unit
   def step(k : Int): Unit
+
+  def remove(who:ICharacter):Unit
 }

@@ -44,4 +44,10 @@ class Party(var member1: ICharacter = new DummyCharacter, var member2: ICharacte
     member2.setActionBar(k)
     member3.setActionBar(k)
   }
+
+  def remove(who:ICharacter):Unit={
+    if(who==member3) member3 = new DummyCharacter
+    if(who==member2) member2 = new DummyCharacter
+    if(who==member1) member1 = new DummyCharacter
+  }
 }

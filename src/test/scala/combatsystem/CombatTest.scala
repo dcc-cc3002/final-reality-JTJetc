@@ -1,6 +1,6 @@
 package combatsystem
 import profession.{BlackMage, Warrior}
-import unit.{Character, EnemyClass, MagicCharacter, Party}
+import unit.{Character, Enemy, EnemyClass, MagicCharacter, Party}
 import weapon.{Sword, Wand}
 
 import scala.collection.mutable.ListBuffer
@@ -29,10 +29,10 @@ class CombatTest extends munit.FunSuite {
     enemy5 = new EnemyClass("Oof",100,25,10,120)
     enemy6 = new EnemyClass("FOO",250,100,50,250)
     SomeParty = new Party(member1)
-    TestTurns = new Programmer(SomeParty,ListBuffer(enemy1,enemy2,enemy3))
+    TestTurns = new Programmer(SomeParty,ListBuffer[Enemy](enemy1,enemy2,enemy3))
   }
 
-  test("Programmer Adding Tests"){
+  test("Programmer Adding and removing Tests"){
     TestTurns.add(member2)
     SomeParty.add(member2)
     assertEquals(TestTurns.party,SomeParty)
@@ -41,6 +41,10 @@ class CombatTest extends munit.FunSuite {
     TestTurns.add(enemy5)
     TestTurns.add(enemy6)
     assertEquals(TestTurns.enemies.last,enemy5)
+    TestTurns.remove(member1)
+    assertEquals(TestTurns.party.member1.profession,null)
+    TestTurns.remove(enemy3)
+    assertEquals(TestTurns.enemies,ListBuffer[Enemy](enemy1,enemy2,enemy4,enemy5))
   }
   test("Programmer Turns Tests"){
     TestTurns.add(member2)
