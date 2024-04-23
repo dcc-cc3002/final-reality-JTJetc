@@ -19,4 +19,6 @@ class DummyCharacter extends Character(profession = null) {
   override def getActionBar: Double = {
     -1
   }
+
+  override def setActionBar(k: Int): Unit = { }
 }

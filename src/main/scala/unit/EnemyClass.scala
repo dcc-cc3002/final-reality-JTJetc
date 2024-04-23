@@ -20,11 +20,10 @@ class EnemyClass(val name: String,var life:Int, var damage:Int, var defense:Int,
     else false
   }
 
-  private var actionbar = 0
-  private var maxActionbar: Double = weight
+  private var actionbar : Double = 0
 
   def getActionBar: Double = {
-    actionbar - maxActionbar
+    actionbar - weight
   }
 
   def setActionBar(k: Int): Unit = {

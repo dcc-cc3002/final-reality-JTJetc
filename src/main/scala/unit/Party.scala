@@ -40,8 +40,8 @@ class Party(var member1: ICharacter = new DummyCharacter, var member2: ICharacte
   }
 
   def step(k: Int): Unit = {
-    if(member1.profession != null) member1.setActionBar(k)
-    if(member2.profession != null) member2.setActionBar(k)
-    if(member3.profession != null) member3.setActionBar(k)
+    member1.setActionBar(k)
+    member2.setActionBar(k)
+    member3.setActionBar(k)
   }
 }
