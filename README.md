@@ -27,6 +27,8 @@ constructor, which will be easier to compare later.
 - They ideal combat manager will step the programmer, then ask if any member can perform a turn, and if true,
 perform an action with returned unit, otherwise keep stepping to increase actionbars
 - Maybe one programmer object can be used for each different battle, making sure to destroy the leftover object
+### Final Assigment
+- Pending
 
 This project is licensed under the
 [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
