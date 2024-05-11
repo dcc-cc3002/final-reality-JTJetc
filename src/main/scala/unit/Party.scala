@@ -1,5 +1,7 @@
 package unit
 
+import scala.collection.mutable.ListBuffer
+
 /** Class representing a Party.
  *
  * When initializing, the slots get filled with dummy characters if no character is inputted.
@@ -7,14 +9,14 @@ package unit
  * @param member1 The first member in party.
  * @param member2 The second member in party.
  * @param member3 The third member in party.
- *
  * @constructor Creates a new Party.
- *
  * @author Javier Torres
  * @since 1.0.0
  * @version 1.0.2
  */
-class Party(var member1: ICharacter = new DummyCharacter, var member2: ICharacter = new DummyCharacter,var member3: ICharacter = new DummyCharacter) extends IParty {
+class Party(protected var member1: ICharacter = new DummyCharacter,
+            protected var member2: ICharacter = new DummyCharacter,
+            protected var member3: ICharacter = new DummyCharacter) extends IParty {
 
   /** Adds a member to one of the party slots
    *
@@ -57,5 +59,27 @@ class Party(var member1: ICharacter = new DummyCharacter, var member2: ICharacte
     if(who==member3) member3 = new DummyCharacter
     if(who==member2) member2 = new DummyCharacter
     if(who==member1) member1 = new DummyCharacter
+  }
+
+  /** Using a private list in the programmer, this checks and delivers an updated list with party members with
+   * filled action bars, by checking excess if it is positive (check getActionBar in Character or MagicCharacter for more details)
+   *
+   * @param inlist A ListBuffer with units delivered by the programmer
+   * @return
+   */
+  def anyTurnForProgrammer(inlist:ListBuffer[Units]): ListBuffer[Units] ={
+    if (member1.getActionBar >= 0) inlist.addOne(member1)
+    if (member2.getActionBar >= 0) inlist.addOne(member2)
+    if (member3.getActionBar >= 0) inlist.addOne(member3)
+    inlist
+  }
+
+  /** Returns a ListBuffer with the Party Members */
+  def getMembers : ListBuffer[ICharacter] = {
+    val memberList = new ListBuffer[ICharacter]
+    memberList += member1
+    memberList += member2
+    memberList += member3
+    memberList
   }
 }

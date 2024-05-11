@@ -12,9 +12,13 @@ package unit
  *
  * @author Javier Torres
  * @since 1.0.0
- * @version 1.0.2
+ * @version 1.0.3
  */
-class EnemyClass(val name: String,var life:Int, var damage:Int, var defense:Int, val weight:Double) extends Enemy{
+class EnemyClass(val name: String,
+                 protected var life:Int,
+                 protected var damage:Int,
+                 protected var defense:Int,
+                 val weight:Double) extends Enemy{
   def isAlive: Boolean = {
     if (life > 0) true
     else false
@@ -25,7 +29,7 @@ class EnemyClass(val name: String,var life:Int, var damage:Int, var defense:Int,
 
   /** Method that compares actionbar with weight
    *
-   * @return The difference between actionbar and weight
+   * @return The difference between actionbar and weight; the excess must be greater or equal to zero
    */
   def getActionBar: Double = {
     actionbar - weight
@@ -40,4 +44,8 @@ class EnemyClass(val name: String,var life:Int, var damage:Int, var defense:Int,
     if(k != 0) actionbar += k
     else actionbar = 0
   }
+
+  def getLife: Int = life
+  def getDamage: Int = damage
+  def getDefense: Int = defense
 }

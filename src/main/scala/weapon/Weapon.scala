@@ -10,5 +10,5 @@ trait Weapon {
   val name: String
   val damage: Int
   val weight: Double
-  var owner: ICharacter
+  protected var owner: ICharacter
 }

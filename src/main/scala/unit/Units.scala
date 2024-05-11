@@ -6,8 +6,8 @@ package unit
  */
 trait Units {
   val name: String
-  var life: Int
-  var defense: Int
+  protected var life: Int
+  protected var defense: Int
   val weight: Double
 
   /** Determines if the current entity is alive.
@@ -17,7 +17,10 @@ trait Units {
    * @return If the entity is alive
    */
   def isAlive: Boolean
-
   def getActionBar: Double
   def setActionBar(k : Int) : Unit
+  /** Returns the life of the unit */
+  def getLife : Int
+  /** Returns the defense of the unit */
+  def getDefense : Int
 }

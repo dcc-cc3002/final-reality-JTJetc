@@ -15,8 +15,11 @@ import unit.ICharacter
  *
  * @author Javier Torres
  * @since 1.0.0
- * @version 1.0.0
+ * @version 1.0.1
  */
-class Axe(val name:String,val damage:Int,val weight:Double,var owner:ICharacter) extends AbstractCommonWeapon {
+class Axe(val name:String,
+          val damage:Int,
+          val weight:Double,
+          protected var owner:ICharacter) extends AbstractCommonWeapon {
 
 }

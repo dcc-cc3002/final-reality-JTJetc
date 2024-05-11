@@ -5,5 +5,7 @@ package unit
  * Used by [[unit.EnemyClass]]
  */
 trait Enemy extends Units{
-  var damage: Int
+  protected var damage: Int
+  /** Returns the damage value of the enemy */
+  def getDamage: Int
 }

@@ -11,14 +11,14 @@ package unit
  * @constructor Creates a new Dummy.
  * @author Javier Torres
  * @since 1.0.0
- * @version 1.0.0
+ * @version 1.0.1
  */
 class DummyCharacter extends Character(profession = null) {
   life = 0
 
-  override def getActionBar: Double = {
+  override def getActionBar: Double = { //so that it never can get a turn
     -1
   }
 
-  override def setActionBar(k: Int): Unit = { }
+  override def setActionBar(k: Int): Unit = { } //does nothing for no turn progress
 }

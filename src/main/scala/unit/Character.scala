@@ -16,9 +16,13 @@ import profession.Profession
  *
  * @author Javier Torres
  * @since 1.0.0
- * @version 1.0.2
+ * @version 1.0.3
  */
-class Character(val name: String = "Unknown",var life: Int = 0,var defense: Int = 0,val weight: Double = 0.1,val profession:Profession) extends AbstractCharacter {
+class Character(val name: String = "Unknown",
+                protected var life: Int = 0,
+                protected var defense: Int = 0,
+                val weight: Double = 0.1,
+                val profession:Profession) extends AbstractCharacter {
   /** Alternative constructor if one where to skip defense, defaulting it to 0 */
   def this(x: String, l: Int, w: Double, p: Profession) = {
     this(x, l, 0, w, p)
@@ -31,9 +35,14 @@ class Character(val name: String = "Unknown",var life: Int = 0,var defense: Int 
     else weight
   }
 
+  def updateMaxActionbar() : Unit = { //make sure when you could equip a weapon, to update maxActionBar
+    if (heldweapon != null) maxActionbar = weight + (heldweapon.weight / 2)
+    else maxActionbar = weight
+  }
+
   /** Method that compares actionbar with maxActionbar
    *
-   * @return The difference between actionbar and maxActionbar
+   * @return The difference between actionbar and maxActionbar, the excess must be greater or equal to zero
    */
   def getActionBar: Double = {
     actionbar - maxActionbar

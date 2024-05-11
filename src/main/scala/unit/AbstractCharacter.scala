@@ -24,4 +24,10 @@ abstract class AbstractCharacter extends ICharacter {
     else false
   }
 
+  def getLife: Int = {
+    life
+  }
+  def getDefense: Int ={
+    defense
+  }
 }

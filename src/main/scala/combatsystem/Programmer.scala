@@ -5,7 +5,7 @@ import scala.collection.mutable.ListBuffer
 
 /** Class representing a programmer of turns.
  *
- * Uses a [[unit.Party]] and a ListBuffer type [[unit.Enemy]] to up to 5 enemies, has many methods to ask and change the actionbar of the units, and then retrieve who could perform an action
+ * Uses a [[unit.Party]] and a ListBuffer type [[unit.Enemy]] to up to 5 enemies, has many methods to ask and change the actionbar of the units, and then check and retrieve who could perform an action
  *
  * @param party A Party of Characters
  * @param enemies A ListBuffer of enemies
@@ -14,9 +14,9 @@ import scala.collection.mutable.ListBuffer
  *
  * @author Javier Torres
  * @since 1.0.0
- * @version 1.0.0
+ * @version 1.0.1
  */
-class Programmer(var party: IParty, val enemies: ListBuffer[Enemy]) {
+class Programmer(private var party: IParty, private val enemies: ListBuffer[Enemy]) {
  /**An arbitrary amount to increase the actionbar*/
  protected var k: Int = 3
  /**A ListBuffer to save the units that have completed their actionbars and can perform a turn, initialized empty*/
@@ -72,13 +72,10 @@ class Programmer(var party: IParty, val enemies: ListBuffer[Enemy]) {
   * @return True if any unit can perform a turn
   */
  def anyTurn: Boolean = {
-  //First clears the list to avoid duplicates
-  readyList.clear()
-  if (party.member1.getActionBar > 0) readyList.addOne(party.member1)
-  if (party.member2.getActionBar > 0) readyList.addOne(party.member2)
-  if (party.member3.getActionBar > 0) readyList.addOne(party.member3)
+  readyList.clear() //First clears the list to avoid duplicates
+  readyList = party.anyTurnForProgrammer(readyList)
   for (n <- enemies) {
-   if (n.getActionBar > 0) readyList.addOne(n)
+   if (n.getActionBar >= 0) readyList.addOne(n) //Check getActionBar in EnemyClass for more details
   }
   //If at least one unit in list, someone can perform a turn, then returns true
   if (readyList.nonEmpty) true
@@ -97,4 +94,19 @@ class Programmer(var party: IParty, val enemies: ListBuffer[Enemy]) {
   result
  }
 
+ /** Gets the stored party
+  *
+  * @return The Programmer's Party
+  */
+ def getParty: IParty = {
+  party
+ }
+
+ /** Gets the stored enemies
+  *
+  * @return The Programmer's Enemies List
+  */
+ def getEnemies: ListBuffer[Enemy] = {
+  enemies
+ }
 }

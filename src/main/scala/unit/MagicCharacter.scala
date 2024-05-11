@@ -17,9 +17,14 @@ import profession.Profession
  *
  * @author Javier Torres
  * @since 1.0.0
- * @version 1.0.2
+ * @version 1.0.3
  */
-class MagicCharacter(val name: String = "Unknown", var life: Int = 0, var defense: Int = 0, val weight: Double = 0.1, val profession: Profession, var mana:Int=0) extends AbstractCharacter {
+class MagicCharacter(val name: String = "Unknown",
+                     protected var life: Int = 0,
+                     protected var defense: Int = 0,
+                     val weight: Double = 0.1,
+                     val profession: Profession,
+                     private var mana:Int=0) extends AbstractCharacter {
   /** Alternative constructor if one where to skip defense, defaulting it to 0 */
   def this(x: String, l: Int, w: Double, p: Profession, m: Int) = {
     this(x, l, 0, w, p, m)
@@ -32,9 +37,14 @@ class MagicCharacter(val name: String = "Unknown", var life: Int = 0, var defens
     else weight
   }
 
+  def updateMaxActionbar() : Unit = { //make sure when you could equip a weapon, to update maxActionBar
+    if (heldweapon != null) maxActionbar = weight + (heldweapon.weight / 2)
+    else maxActionbar = weight
+  }
+
   /** Method that compares actionbar with maxActionbar
    *
-   * @return The difference between actionbar and maxActionbar
+   * @return The difference between actionbar and maxActionbar, the excess must be greater or equal to zero
    */
   def getActionBar: Double = {
     actionbar - maxActionbar
@@ -48,5 +58,10 @@ class MagicCharacter(val name: String = "Unknown", var life: Int = 0, var defens
   def setActionBar(k: Int): Unit = {
     if(k != 0) actionbar += k
     else actionbar = 0
+  }
+
+  /** Returns the mana of the character */
+  def getMana: Int = {
+    mana
   }
 }

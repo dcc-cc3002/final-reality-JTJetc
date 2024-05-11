@@ -28,7 +28,8 @@ constructor, which will be easier to compare later.
 perform an action with returned unit, otherwise keep stepping to increase actionbars
 - Maybe one programmer object can be used for each different battle, making sure to destroy the leftover object
 ### Final Assigment
-- Pending
+- Started the privatization of values and methods, making sure that var type values where at least protected, while
+val types can be public. And added methods to view some now private or protected values.
 
 This project is licensed under the
 [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).

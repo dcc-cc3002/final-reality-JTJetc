@@ -7,4 +7,8 @@ import profession.Profession
  */
 trait ICharacter extends Units{
   val profession:Profession
+
+  /** Updates the maxActionbar to the correct value */
+  def updateMaxActionbar() : Unit
+
 }

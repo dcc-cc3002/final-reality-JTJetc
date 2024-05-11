@@ -35,16 +35,16 @@ class CombatTest extends munit.FunSuite {
   test("Programmer Adding and removing Tests"){
     TestTurns.add(member2)
     SomeParty.add(member2)
-    assertEquals(TestTurns.party,SomeParty)
+    assertEquals(TestTurns.getParty,SomeParty)
     TestTurns.add(enemy4)
-    assertEquals(TestTurns.enemies(3),enemy4)
+    assertEquals(TestTurns.getEnemies(3),enemy4)
     TestTurns.add(enemy5)
     TestTurns.add(enemy6)
-    assertEquals(TestTurns.enemies.last,enemy5)
+    assertEquals(TestTurns.getEnemies.last,enemy5)
     TestTurns.remove(member1)
-    assertEquals(TestTurns.party.member1.profession,null)
+    assertEquals(TestTurns.getParty.getMembers.head.profession,null) //Dummy Character has no profession
     TestTurns.remove(enemy3)
-    assertEquals(TestTurns.enemies,ListBuffer[Enemy](enemy1,enemy2,enemy4,enemy5))
+    assertEquals(TestTurns.getEnemies,ListBuffer[Enemy](enemy1,enemy2,enemy4,enemy5))
   }
   test("Programmer Turns Tests"){
     TestTurns.add(member2)
