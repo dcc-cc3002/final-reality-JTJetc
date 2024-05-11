@@ -19,9 +19,9 @@ class CombatTest extends munit.FunSuite {
 
   override def beforeEach(context: BeforeEach): Unit = {
     member1 = new Character("Dude",100,5,50.0,new Warrior)
-    member1.heldweapon = new Sword("Test",10,12.5,member1)
+    member1.placeholderEquipWeapon(new Sword("Test",10,12.5,member1))
     member2 = new MagicCharacter("Another Dude",100,1,40.25,new BlackMage, 500)
-    member2.heldweapon = new Wand("Test",10,12.5,member2, 50)
+    member2.placeholderEquipWeapon(new Wand("Test",10,12.5,member2, 50))
     enemy1 = new EnemyClass("Foo",20,10,3,10.0)
     enemy2 = new EnemyClass("Another Foo",30,10,5,10.5)
     enemy3 = new EnemyClass("Foo III",45,12,30,12.5)

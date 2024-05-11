@@ -36,7 +36,7 @@ class CharacterTest extends munit.FunSuite {
     assertEquals(trainer.weight,32.5)
     assertEquals(trainer.profession.name,"Paladin")
     assertEquals(trainer2.weight,50.0)
-    assertEquals(trainer2.heldweapon,null)
+    assertEquals(trainer2.getHeldWeapon,null)
     assertEquals(magic_trainer.name,"magic")
     assertEquals(magic_trainer.getLife,20)
     assertEquals(magic_trainer.getDefense,5)

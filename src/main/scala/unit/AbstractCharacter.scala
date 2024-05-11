@@ -10,14 +10,20 @@ import weapon.Weapon
  *
  * @author Javier Torres
  * @since 1.0.0
- * @version 1.0.1
+ * @version 1.0.2
  */
 abstract class AbstractCharacter extends ICharacter {
   /** The weapon this character is holding.
    *
    * Starts by default empty, meaning no held weapon.
    */
-  var heldweapon: Weapon = null
+  protected var heldweapon: Weapon = null
+  /** Placeholder method to equip a weapon */
+  def placeholderEquipWeapon(weapon:Weapon) : Unit ={
+    heldweapon = weapon
+  }
+  /** Returns the equipped weapon */
+  def getHeldWeapon : Weapon = heldweapon
 
   def isAlive: Boolean = {
     if (life > 0) true
