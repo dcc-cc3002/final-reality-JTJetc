@@ -1,5 +1,6 @@
 package unit
 
+import exceptions.Require
 import profession.Profession
 
 /** Class representing a Character.
@@ -7,7 +8,7 @@ import profession.Profession
  * When initializing, one can skip the defense value, alternative constructor defaults it to 0.
  *
  * @param name The name of the character.
- * @param life The life of the character.
+ * @param life The life and maxLife of the character.
  * @param defense The defense of the character.
  * @param weight The weight of the character.
  * @param profession The profession of the character.
@@ -16,10 +17,10 @@ import profession.Profession
  *
  * @author Javier Torres
  * @since 1.0.0
- * @version 1.0.3
+ * @version 1.0.4
  */
 class Character(val name: String = "Unknown",
-                protected var life: Int = 0,
+                protected var life : Int = 0,
                 protected var defense: Int = 0,
                 val weight: Double = 0.1,
                 val profession:Profession) extends AbstractCharacter {
@@ -27,6 +28,11 @@ class Character(val name: String = "Unknown",
   def this(x: String, l: Int, w: Double, p: Profession) = {
     this(x, l, 0, w, p)
   }
+  /** Max life value, initialized to the constructor life value */
+  val maxLife : Int = life
+  Require.Stat(life,"life") atLeast 0
+  Require.Stat(defense,"defense") atLeast 0
+  require(weight>0,"number must be greater than zero")
   /**The actionbar of the character, starts at zero*/
   private var actionbar : Double = 0
   /**The threshold to complete to consider a complete actionbar and be able to get a turn*/

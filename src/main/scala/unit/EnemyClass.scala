@@ -1,18 +1,18 @@
 package unit
 
+import exceptions.Require
+
 /** Class representing an Enemy.
  *
  * @param name The name of the enemy.
- * @param life The life of the enemy.
+ * @param life The life and maxLife of the enemy.
  * @param damage The damage of the enemy.
  * @param defense The defense of the enemy.
  * @param weight The weight of the enemy.
- *
  * @constructor Creates a new Enemy.
- *
  * @author Javier Torres
  * @since 1.0.0
- * @version 1.0.3
+ * @version 1.0.4
  */
 class EnemyClass(val name: String,
                  protected var life:Int,
@@ -23,7 +23,12 @@ class EnemyClass(val name: String,
     if (life > 0) true
     else false
   }
-
+  /** Max life value, initialized to the constructor life value */
+  val maxLife : Int = life
+  Require.Stat(life,"life") atLeast 0
+  Require.Stat(defense,"defense") atLeast 0
+  Require.Stat(damage,"damage") atLeast 0
+  require(weight>0,"number must be greater than zero")
   /**The actionbar of the enemy, starts at zero*/
   private var actionbar : Double = 0
 

@@ -9,6 +9,7 @@ trait Units {
   protected var life: Int
   protected var defense: Int
   val weight: Double
+  val maxLife: Int
 
   /** Determines if the current entity is alive.
    *

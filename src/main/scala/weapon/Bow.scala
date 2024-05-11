@@ -1,5 +1,6 @@
 package weapon
 
+import exceptions.Require
 import unit.ICharacter
 
 /** Class representing a Bow.
@@ -15,7 +16,7 @@ import unit.ICharacter
  *
  * @author Javier Torres
  * @since 1.0.0
- * @version 1.0.1
+ * @version 1.0.2
  */
 class Bow(val name:String,
           val damage:Int,

@@ -30,6 +30,9 @@ perform an action with returned unit, otherwise keep stepping to increase action
 ### Final Assigment
 - Started the privatization of values and methods, making sure that var type values where at least protected, while
 val types can be public. And added methods to view some now private or protected values.
+- Decided to add a maxLife value for units, it could be useful in the future for not healing over the maximum.
+- Used require to avoid using illegal values in constructors.
+- 
 
 This project is licensed under the
 [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).

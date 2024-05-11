@@ -1,5 +1,6 @@
 package unit
 
+import exceptions.Require
 import profession.Profession
 
 /** Class representing a Magic Character.
@@ -7,7 +8,7 @@ import profession.Profession
  * When initializing, one can skip the defense value, alternative constructor defaults it to 0.
  *
  * @param name The name of the magic character.
- * @param life The life of the magic character.
+ * @param life The life and maxLife of the magic character.
  * @param defense The defense of the magic character.
  * @param weight The weight of the magic character.
  * @param profession The profession of the magic character.
@@ -17,18 +18,26 @@ import profession.Profession
  *
  * @author Javier Torres
  * @since 1.0.0
- * @version 1.0.3
+ * @version 1.0.4
  */
 class MagicCharacter(val name: String = "Unknown",
                      protected var life: Int = 0,
                      protected var defense: Int = 0,
                      val weight: Double = 0.1,
                      val profession: Profession,
-                     private var mana:Int=0) extends AbstractCharacter {
+                     private var mana:Int=1) extends AbstractCharacter {
   /** Alternative constructor if one where to skip defense, defaulting it to 0 */
   def this(x: String, l: Int, w: Double, p: Profession, m: Int) = {
     this(x, l, 0, w, p, m)
   }
+  /** Max life value, initialized to the constructor life value */
+  val maxLife : Int = life
+  /** Max mana value, initialized to the constructor mana value */
+  val maxMana : Int = mana
+  Require.Stat(life,"life") atLeast 0
+  Require.Stat(defense,"defense") atLeast 0
+  require(weight>0,"number must be greater than zero")
+  Require.Stat(mana,"mana") atLeast 0
   /**The actionbar of the character, starts at zero*/
   private var actionbar : Double = 0
   /**The threshold to complete to consider a complete actionbar and be able to get a turn*/
