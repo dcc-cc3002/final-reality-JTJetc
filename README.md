@@ -32,7 +32,8 @@ perform an action with returned unit, otherwise keep stepping to increase action
 val types can be public. And added methods to view some now private or protected values.
 - Decided to add a maxLife value for units, it could be useful in the future for not healing over the maximum.
 - Used require to avoid using illegal values in constructors.
-- 
+- Added methods for character attacking enemies, enemies attacking characters, character taking damage by enemies, 
+and enemies taking damage by characters.
 
 This project is licensed under the
 [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).

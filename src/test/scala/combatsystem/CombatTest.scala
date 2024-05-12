@@ -8,6 +8,7 @@ import scala.collection.mutable.ListBuffer
 class CombatTest extends munit.FunSuite {
   var member1 : Character = _
   var member2 : MagicCharacter = _
+  var member3 : Character = _
   var enemy1 : EnemyClass = _
   var enemy2 : EnemyClass = _
   var enemy3 : EnemyClass = _
@@ -19,9 +20,10 @@ class CombatTest extends munit.FunSuite {
 
   override def beforeEach(context: BeforeEach): Unit = {
     member1 = new Character("Dude",100,5,50.0,new Warrior)
-    member1.placeholderEquipWeapon(new Sword("Test",10,12.5,member1))
+    member1.placeholderEquipWeapon(new Sword("Test",50,12.5,member1))
     member2 = new MagicCharacter("Another Dude",100,1,40.25,new BlackMage, 500)
     member2.placeholderEquipWeapon(new Wand("Test",10,12.5,member2, 50))
+    member3 = new Character("Dude with no weapon",100,5,50.0,new Warrior)
     enemy1 = new EnemyClass("Foo",20,10,3,10.0)
     enemy2 = new EnemyClass("Another Foo",30,10,5,10.5)
     enemy3 = new EnemyClass("Foo III",45,12,30,12.5)
@@ -59,5 +61,22 @@ class CombatTest extends munit.FunSuite {
     if(TestTurns.anyTurn) assertEquals(TestTurns.getTurn,member2)
     if(TestTurns.anyTurn) assertEquals(TestTurns.getTurn,member1)
     assertEquals(TestTurns.anyTurn,false)
+  }
+  test("Attack Tests"){
+    member1.attackAnEnemy(enemy1)
+    assertEquals(enemy1.getLife,0)
+    member1.attackAnEnemy(enemy3)
+    assertEquals(enemy3.getLife,25)
+    member2.attackAnEnemy(enemy5)
+    assertEquals(enemy5.getLife,100)
+    member3.attackAnEnemy(enemy2)
+    assertEquals(enemy2.getLife,30)
+
+    enemy4.attackACharacter(member1)
+    assertEquals(member1.getLife,90)
+    enemy6.attackACharacter(member2)
+    assertEquals(member2.getLife,1)
+    enemy6.attackACharacter(member2)
+    assertEquals(member2.getLife,0)
   }
 }

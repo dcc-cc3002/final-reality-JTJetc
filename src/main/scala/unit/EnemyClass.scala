@@ -53,4 +53,15 @@ class EnemyClass(val name: String,
   def getLife: Int = life
   def getDamage: Int = damage
   def getDefense: Int = defense
+
+  def attackACharacter(who:ICharacter) : Unit = {
+    who.hurtByEnemy(this)
+  }
+  def hurtByCharacter(who:ICharacter) : Unit ={
+    val howMuchDamage : Int = who.getHeldWeapon.damage
+    var howMuchWillItHurt : Int = howMuchDamage - defense
+    if(howMuchWillItHurt < 0) howMuchWillItHurt = 0
+    life -= howMuchWillItHurt
+    if(life < 0) life = 0
+  }
 }

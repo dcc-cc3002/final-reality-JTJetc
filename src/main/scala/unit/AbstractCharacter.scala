@@ -36,4 +36,14 @@ abstract class AbstractCharacter extends ICharacter {
   def getDefense: Int ={
     defense
   }
+
+  def attackAnEnemy(who:Enemy) : Unit = {
+    if(heldweapon != null) who.hurtByCharacter(this) //nothing happens if no weapon is held
+  }
+  def hurtByEnemy(who:Enemy) : Unit ={
+    var howMuchWillItHurt : Int = who.getDamage - defense
+    if(howMuchWillItHurt < 0) howMuchWillItHurt = 0
+    life -= howMuchWillItHurt
+    if(life < 0) life = 0
+  }
 }

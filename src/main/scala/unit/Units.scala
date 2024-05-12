@@ -24,4 +24,5 @@ trait Units {
   def getLife : Int
   /** Returns the defense of the unit */
   def getDefense : Int
+
 }
