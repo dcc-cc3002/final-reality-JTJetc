@@ -79,4 +79,11 @@ class CombatTest extends munit.FunSuite {
     enemy6.attackACharacter(member2)
     assertEquals(member2.getLife,0)
   }
+  test("Placeholder update actionbar after equipping weapon tests"){
+    member1.updateMaxActionbar()
+    member2.updateMaxActionbar()
+    member3.updateMaxActionbar()
+    member2.placeholderEquipWeapon(null)
+    member2.updateMaxActionbar()
+  }
 }

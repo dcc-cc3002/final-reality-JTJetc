@@ -1,5 +1,6 @@
 package unit
 
+import exceptions.InvalidStatException
 import profession.{BlackMage, Ninja, Paladin, Warrior, WhiteMage}
 
 class CharacterTest extends munit.FunSuite {
@@ -34,16 +35,20 @@ class CharacterTest extends munit.FunSuite {
     assertEquals(trainer.getLife,100)
     assertEquals(trainer.getDefense,50)
     assertEquals(trainer.weight,32.5)
+    assertEquals(trainer.maxLife,100)
     assertEquals(trainer.profession.name,"Paladin")
     assertEquals(trainer2.weight,50.0)
     assertEquals(trainer2.getHeldWeapon,null)
     assertEquals(magic_trainer.name,"magic")
     assertEquals(magic_trainer.getLife,20)
+    assertEquals(magic_trainer.maxLife,20)
     assertEquals(magic_trainer.getDefense,5)
     assertEquals(magic_trainer.weight,25.0)
     assertEquals(magic_trainer.profession.name,"Black Mage")
     assertEquals(magic_trainer.getMana,1000)
     assertEquals(magic_trainer2.getMana,1)
+    assertEquals(magic_trainer2.maxMana,1)
+    assertEquals(magic_trainer2.getHeldWeapon,null)
     assertEquals(weak_character.weight,30.0)
     assertEquals(weak_character.getDefense,0)
     assertEquals(weak_character2.weight,32.5)
@@ -56,7 +61,15 @@ class CharacterTest extends munit.FunSuite {
     assertEquals(DeathParty.isAlive,false)
   }
   test("Enemies"){
+    assertEquals(some_enemy.getDefense,3)
+    assertEquals(some_enemy.maxLife,5)
     assertEquals(some_enemy.isAlive,true)
     assertEquals(some_death_enemy.isAlive,false)
+  }
+  test("Require Exception"){
+    intercept[InvalidStatException](new Character("Life Bug", -1, 50, 32.5, new Paladin))
+    intercept[InvalidStatException](new Character("Defense Bug", 10, -10, 32.5, new Paladin))
+    intercept[IllegalArgumentException](new Character("Weight Bug", 10, 100, 0, new Paladin))
+    intercept[InvalidStatException](new MagicCharacter("Magic Bug", 20, 5, 25, new BlackMage, -1))
   }
 }
