@@ -27,7 +27,7 @@ constructor, which will be easier to compare later.
 - They ideal combat manager will step the programmer, then ask if any member can perform a turn, and if true,
 perform an action with returned unit, otherwise keep stepping to increase actionbars
 - Maybe one programmer object can be used for each different battle, making sure to destroy the leftover object
-### Final Assigment
+### Final Assigment 1
 - Started the privatization of values and methods, making sure that var type values where at least protected, while
 val types can be public. And added methods to view some now private or protected values.
 - Decided to add a maxLife value for units, it could be useful in the future for not healing over the maximum.
@@ -35,6 +35,10 @@ val types can be public. And added methods to view some now private or protected
 - Added methods for character attacking enemies, enemies attacking characters, character taking damage by enemies, 
 and enemies taking damage by characters.
 - Added more tests for more code coverage.
+
+## 2° Assigment
+### Partial Assigment 3
+- Pending
 
 This project is licensed under the
 [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
