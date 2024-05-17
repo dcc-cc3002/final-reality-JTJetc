@@ -38,7 +38,15 @@ and enemies taking damage by characters.
 
 ## 2° Assigment
 ### Partial Assigment 3
-- Pending
+- Added two exceptions for invalid weapon for profession and weapon already being used by someone else.
+- Added methods to characters and weapons using double dispatch to ask the weapon itself for equipping and even
+throwing exceptions if required. The idea for the future is to check if weapons can be equipped, then equip
+the weapon later, but if trying to force equip something that should not be equipped, exceptions get thrown 
+for equipping something null, for weapons already being used by someone else, and by invalid weapons for a
+certain profession.
+- Added methods for un-equipping weapons and made sure to update the max action bar after equipping and
+un-equipping weapons.
+- Also added method to weapons to get the owner for comparing.
 
 This project is licensed under the
 [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
