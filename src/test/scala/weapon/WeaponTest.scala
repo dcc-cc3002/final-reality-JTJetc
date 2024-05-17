@@ -26,10 +26,12 @@ class WeaponTest extends munit.FunSuite {
     assertEquals(dude3.getHeldWeapon,null)
     assertEquals(magic_dude1.getHeldWeapon,null)
     assertEquals(magic_dude2.getHeldWeapon,null)
-    assertEquals(TestSword.getOwner.profession,null) //DummyCharacters or rather no owners
-    assertEquals(TestAxe.getOwner.profession,null)
-    assertEquals(TestBow.getOwner.profession,null)
-    assertEquals(TestWand.getOwner.profession,null)
-    assertEquals(TestStaff.getOwner.profession,null)
+    assertEquals(TestSword.getOwner,null) //DummyCharacters or rather no owners
+    assertEquals(TestAxe.getOwner,null)
+    assertEquals(TestBow.getOwner,null)
+    assertEquals(TestWand.getOwner,null)
+    assertEquals(TestStaff.getOwner,null)
+    //canEquipWeapon?
+    //equipWeapon
   }
 }
