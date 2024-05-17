@@ -11,4 +11,7 @@ trait Weapon {
   val damage: Int
   val weight: Double
   protected var owner: ICharacter
+
+  /** Returns the owner of the weapon; returns null if no owner (DummyCharacter) */
+  def getOwner : ICharacter
 }
