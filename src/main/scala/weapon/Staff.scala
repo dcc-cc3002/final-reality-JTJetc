@@ -1,6 +1,6 @@
 package weapon
 
-import unit.ICharacter
+import unit.{DummyCharacter, ICharacter}
 
 /** Class representing a Staff.
  *
@@ -16,7 +16,7 @@ import unit.ICharacter
  *
  * @author Javier Torres
  * @since 1.0.0
- * @version 1.0.1
+ * @version 1.0.3
  */
 class Staff(val name:String,
             val damage:Int,
@@ -24,4 +24,11 @@ class Staff(val name:String,
             protected var owner:ICharacter,
             magic_damage:Int) extends AbstractMagicWeapon(magic_damage) {
 
+  def removeOwner(): Unit = { owner = new DummyCharacter }
+
+  def canEquipTo(who: ICharacter): Boolean = {
+    if(owner.profession != null) false
+    else if(who.profession.name == "Black Mage" || who.profession.name == "White Mage") true
+    else false
+  }
 }

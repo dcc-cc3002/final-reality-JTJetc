@@ -1,7 +1,7 @@
 package weapon
 
 import exceptions.Require
-import unit.ICharacter
+import unit.{DummyCharacter, ICharacter}
 
 /** Class representing a Bow.
  *
@@ -16,11 +16,18 @@ import unit.ICharacter
  *
  * @author Javier Torres
  * @since 1.0.0
- * @version 1.0.2
+ * @version 1.0.3
  */
 class Bow(val name:String,
           val damage:Int,
           val weight:Double,
           protected var owner:ICharacter) extends AbstractCommonWeapon {
 
+  def removeOwner(): Unit = { owner = new DummyCharacter }
+
+  def canEquipTo(who: ICharacter): Boolean = {
+    if(owner.profession != null) false
+    else if(who.profession.name == "Warrior" || who.profession.name == "Ninja" || who.profession.name == "White Mage") true
+    else false
+  }
 }

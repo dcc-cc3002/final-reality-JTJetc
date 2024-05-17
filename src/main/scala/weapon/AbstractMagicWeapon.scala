@@ -19,4 +19,10 @@ Require.Stat(magic_damage,"Magic damage") atLeast 0
     if(owner.profession == null) null
     else owner
   }
+
+  def equipTo(who: ICharacter): Unit = {
+    if(owner.profession != null) throw new UsedWeaponException("Weapon has another owner")
+    else if(!canEquipTo(who)) throw new InvalidWeaponException("Trying to equip to invalid profession")
+    else { owner = who }
+  }
 }

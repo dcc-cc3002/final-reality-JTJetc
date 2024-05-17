@@ -1,6 +1,6 @@
 package unit
 
-import weapon.Weapon
+import weapon.{InvalidWeaponException, UsedWeaponException, Weapon}
 
 /** Abstract class representing Characters.
  *
@@ -47,14 +47,24 @@ abstract class AbstractCharacter extends ICharacter {
   }
 
   def canEquipWeapon(weapon:Weapon) : Boolean = {
-    weapon.canEquipTo(this)
+    if(weapon != null) weapon.canEquipTo(this)
+    else false
+  }
+  def removeWeapon(): Unit = {
+    if(heldweapon != null) { heldweapon.removeOwner() }
+    heldweapon = null
+    updateMaxActionbar()
   }
   def equipWeapon(weapon:Weapon) : Unit = {
     try {
       weapon.equipTo(this)
+      heldweapon = weapon
+      updateMaxActionbar()
     }
     catch {
-      case a: SomeException => println()
+      case a: InvalidWeaponException => println(s"Can not equip ${weapon.getClass} to ${profession.name}")
+      case b: NullPointerException => println("Can not equip null weapon")
+      case c: UsedWeaponException => println(s"${weapon.name} is already being used by someone else")
     }
   }
 }
