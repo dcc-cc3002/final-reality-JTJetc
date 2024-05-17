@@ -1,6 +1,6 @@
 package combatsystem
 import profession.{BlackMage, Warrior}
-import unit.{Character, Enemy, EnemyClass, MagicCharacter, Party}
+import unit.{Character, DummyCharacter, Enemy, EnemyClass, MagicCharacter, Party}
 import weapon.{Sword, Wand}
 
 import scala.collection.mutable.ListBuffer
@@ -20,9 +20,9 @@ class CombatTest extends munit.FunSuite {
 
   override def beforeEach(context: BeforeEach): Unit = {
     member1 = new Character("Dude",100,5,50.0,new Warrior)
-    member1.placeholderEquipWeapon(new Sword("Test",50,12.5,member1))
+    member1.equipWeapon(new Sword("Test",50,12.5,new DummyCharacter))
     member2 = new MagicCharacter("Another Dude",100,1,40.25,new BlackMage, 500)
-    member2.placeholderEquipWeapon(new Wand("Test",10,12.5,member2, 50))
+    member2.equipWeapon(new Wand("Test2",10,12.5,new DummyCharacter, 50))
     member3 = new Character("Dude with no weapon",100,5,50.0,new Warrior)
     enemy1 = new EnemyClass("Foo",20,10,3,10.0)
     enemy2 = new EnemyClass("Another Foo",30,10,5,10.5)

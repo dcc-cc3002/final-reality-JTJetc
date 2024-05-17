@@ -31,7 +31,28 @@ class WeaponTest extends munit.FunSuite {
     assertEquals(TestBow.getOwner,null)
     assertEquals(TestWand.getOwner,null)
     assertEquals(TestStaff.getOwner,null)
-    //canEquipWeapon
-    //equipWeapon
+
+    assertEquals(dude1.canEquipWeapon(TestSword),true)
+    assertEquals(dude1.canEquipWeapon(TestBow),false)
+    dude1.equipWeapon(TestSword)
+    dude2.equipWeapon(TestAxe)
+    dude3.equipWeapon(TestBow)
+    magic_dude1.equipWeapon(TestWand)
+    magic_dude2.equipWeapon(TestStaff)
+
+    assertEquals(TestSword.getOwner,dude1)
+    assertEquals(TestAxe.getOwner,dude2)
+    assertEquals(TestBow.getOwner,dude3)
+    assertEquals(TestWand.getOwner,magic_dude1)
+    assertEquals(TestStaff.getOwner,magic_dude2)
+    assertEquals(dude1.getHeldWeapon,TestSword)
+    assertEquals(dude2.getHeldWeapon,TestAxe)
+    assertEquals(dude3.getHeldWeapon,TestBow)
+    assertEquals(magic_dude1.getHeldWeapon,TestWand)
+    assertEquals(magic_dude2.getHeldWeapon,TestStaff)
+
+    assertEquals(dude1.canEquipWeapon(TestSword),false) //weapon is now being used
+  }
+  test("Equipping weapons exceptions"){
   }
 }

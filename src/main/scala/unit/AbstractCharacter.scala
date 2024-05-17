@@ -57,6 +57,7 @@ abstract class AbstractCharacter extends ICharacter {
   }
   def equipWeapon(weapon:Weapon) : Unit = {
     try {
+      removeWeapon()
       weapon.equipTo(this)
       heldweapon = weapon
       updateMaxActionbar()
