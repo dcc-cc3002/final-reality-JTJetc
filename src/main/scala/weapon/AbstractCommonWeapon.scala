@@ -21,8 +21,8 @@ abstract class AbstractCommonWeapon extends Weapon{
   }
 
   def equipTo(who: ICharacter): Unit = {
-    if(owner.profession != null) throw new UsedWeaponException("Weapon already has owner")
-    else if(!canEquipTo(who)) throw new InvalidWeaponException("Trying to equip to invalid profession")
+    if(owner.profession != null) throw new UsedWeaponException(s"$name is already being used by someone else")
+    else if(!canEquipTo(who)) throw new InvalidWeaponException(s"Can not equip ${this.getClass.getName} to ${who.profession.name}")
     else { owner = who }
   }
 }

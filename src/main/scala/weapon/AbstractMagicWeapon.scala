@@ -21,8 +21,8 @@ Require.Stat(magic_damage,"Magic damage") atLeast 0
   }
 
   def equipTo(who: ICharacter): Unit = {
-    if(owner.profession != null) throw new UsedWeaponException("Weapon has another owner")
-    else if(!canEquipTo(who)) throw new InvalidWeaponException("Trying to equip to invalid profession")
+    if(owner.profession != null) throw new UsedWeaponException(s"$name is already being used by someone else")
+    else if(!canEquipTo(who)) throw new InvalidWeaponException(s"Can not equip magic ${this.getClass.getName} to ${who.profession.name}")
     else { owner = who }
   }
 }
