@@ -31,7 +31,7 @@ class WeaponTest extends munit.FunSuite {
     assertEquals(TestBow.getOwner,null)
     assertEquals(TestWand.getOwner,null)
     assertEquals(TestStaff.getOwner,null)
-    //canEquipWeapon?
+    //canEquipWeapon
     //equipWeapon
   }
 }

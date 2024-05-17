@@ -4,13 +4,11 @@ import weapon.Weapon
 
 /** Abstract class representing Characters.
  *
- * Professions name must be provided by the subclasses.
- *
  * Used by [[unit.Character]], and [[unit.MagicCharacter]]
  *
  * @author Javier Torres
  * @since 1.0.0
- * @version 1.0.2
+ * @version 1.0.3
  */
 abstract class AbstractCharacter extends ICharacter {
   /** The weapon this character is holding.
@@ -18,10 +16,11 @@ abstract class AbstractCharacter extends ICharacter {
    * Starts by default empty, meaning no held weapon.
    */
   protected var heldweapon: Weapon = null
+  /*
   /** Placeholder method to equip a weapon */
   def placeholderEquipWeapon(weapon:Weapon) : Unit ={
     heldweapon = weapon
-  }
+  }*/
   /** Returns the equipped weapon */
   def getHeldWeapon : Weapon = heldweapon
 
@@ -45,5 +44,17 @@ abstract class AbstractCharacter extends ICharacter {
     if(howMuchWillItHurt < 0) howMuchWillItHurt = 0
     life -= howMuchWillItHurt
     if(life < 0) life = 0
+  }
+
+  def canEquipWeapon(weapon:Weapon) : Boolean = {
+    weapon.canEquipTo(this)
+  }
+  def equipWeapon(weapon:Weapon) : Unit = {
+    try {
+      weapon.equipTo(this)
+    }
+    catch {
+      case a: SomeException => println()
+    }
   }
 }
