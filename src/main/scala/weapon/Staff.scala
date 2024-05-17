@@ -24,7 +24,6 @@ class Staff(val name:String,
             protected var owner:ICharacter,
             magic_damage:Int) extends AbstractMagicWeapon(magic_damage) {
 
-  def removeOwner(): Unit = { owner = new DummyCharacter }
 
   def canEquipTo(who: ICharacter): Boolean = {
     if(owner.profession != null) false

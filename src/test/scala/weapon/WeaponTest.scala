@@ -4,18 +4,30 @@ import profession._
 import unit.{Character, DummyCharacter, MagicCharacter}
 
 class WeaponTest extends munit.FunSuite {
-  var TestSword: Sword = new Sword("Starter Sword",5,10,new DummyCharacter)
-  var TestAxe: Axe = new Axe("Starter Axe",15,30.5,new DummyCharacter)
-  var TestBow: Bow = new Bow("Starter Bow",10,8.25,new DummyCharacter)
-  var TestWand: Wand = new Wand("Starter Wand",5,3,new DummyCharacter,20)
-  var TestStaff: Staff = new Staff("Starter Staff",10,17.5,new DummyCharacter,15)
+  var TestSword: Sword = _
+  var TestAxe: Axe = _
+  var TestBow: Bow = _
+  var TestWand: Wand = _
+  var TestStaff: Staff = _
 
-  var dude1 = new Character("Dude 1", 100, 50, 32.5, new Paladin)
-  var dude2 = new Character("Dude 2", 100, 50, 32.5, new Warrior)
-  var dude3 = new Character("Dude 3", 100, 50, 32.5, new Ninja)
-  var magic_dude1 = new MagicCharacter("Magic Dude 1", 20, 5, 25, new BlackMage, 1000)
-  var magic_dude2 = new MagicCharacter("Magic Dude 2", 20, 5, 25, new WhiteMage, 1000)
+  var dude1 : Character = _
+  var dude2 : Character = _
+  var dude3 : Character = _
+  var magic_dude1 : MagicCharacter = _
+  var magic_dude2 : MagicCharacter = _
+  override def beforeEach(context: BeforeEach): Unit = {
+    TestSword = new Sword("Starter Sword",5,10,new DummyCharacter)
+    TestAxe = new Axe("Starter Axe",15,30.5,new DummyCharacter)
+    TestBow = new Bow("Starter Bow",10,8.25,new DummyCharacter)
+    TestWand = new Wand("Starter Wand",5,3,new DummyCharacter,20)
+    TestStaff = new Staff("Starter Staff",10,17.5,new DummyCharacter,15)
 
+    dude1 = new Character("Dude 1", 100, 50, 32.5, new Paladin)
+    dude2 = new Character("Dude 2", 100, 50, 32.5, new Warrior)
+    dude3 = new Character("Dude 3", 100, 50, 32.5, new Ninja)
+    magic_dude1 = new MagicCharacter("Magic Dude 1", 20, 5, 25, new BlackMage, 1000)
+    magic_dude2 = new MagicCharacter("Magic Dude 2", 20, 5, 25, new WhiteMage, 1000)
+  }
   test("Weapons Constructors Tests"){
     assertEquals(TestSword.weight,10.0)
     assertEquals(TestStaff.magic_damage,15)
@@ -59,5 +71,14 @@ class WeaponTest extends munit.FunSuite {
     dude1.equipWeapon(TestAxe)
     interceptMessage[UsedWeaponException]("Starter Axe is already being used by someone else"){dude2.equipWeapon(TestAxe)}
     intercept[NullPointerException](dude1.equipWeapon(null))
+  }
+
+  test("More Coverage"){
+    magic_dude1.equipWeapon(TestWand)
+    magic_dude1.removeWeapon()
+    assertEquals(magic_dude1.getHeldWeapon,null)
+    assertEquals(dude1.canEquipWeapon(TestWand),false)
+    assertEquals(magic_dude1.canEquipWeapon(TestAxe),false)
+    assertEquals(magic_dude2.canEquipWeapon(TestSword),false)
   }
 }

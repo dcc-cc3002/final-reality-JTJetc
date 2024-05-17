@@ -23,7 +23,6 @@ class Axe(val name:String,
           val weight:Double,
           protected var owner:ICharacter) extends AbstractCommonWeapon {
 
-  def removeOwner(): Unit = { owner = new DummyCharacter }
 
   def canEquipTo(who: ICharacter): Boolean = {
     if(owner.profession != null) false

@@ -1,7 +1,7 @@
 package weapon
 
 import exceptions.Require
-import unit.ICharacter
+import unit.{DummyCharacter, ICharacter}
 
 /** Abstract class representing non magic weapons.
  *
@@ -19,7 +19,7 @@ abstract class AbstractCommonWeapon extends Weapon{
     if(owner.profession == null) null
     else owner
   }
-
+  def removeOwner(): Unit = { owner = new DummyCharacter }
   def equipTo(who: ICharacter): Unit = {
     if(owner.profession != null) throw new UsedWeaponException(s"$name is already being used by someone else")
     else if(!canEquipTo(who)) throw new InvalidWeaponException(s"Can not equip ${this.getClass.getName} to ${who.profession.name}")
