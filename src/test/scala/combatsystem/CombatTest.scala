@@ -62,7 +62,7 @@ class CombatTest extends munit.FunSuite {
     if(TestTurns.anyTurn) assertEquals(TestTurns.getTurn,member1)
     assertEquals(TestTurns.anyTurn,false)
   }
-  test("Attack Tests"){
+  test("Attack Tests"){ // characters cant attack enemies, and enemies cant attack characters
     member1.attackAnEnemy(enemy1)
     assertEquals(enemy1.getLife,0)
     member1.attackAnEnemy(enemy3)
@@ -79,12 +79,4 @@ class CombatTest extends munit.FunSuite {
     enemy6.attackACharacter(member2)
     assertEquals(member2.getLife,0)
   }
-  /* //Removing for actual equipping weapons methods
-  test("Placeholder update actionbar after equipping weapon tests"){
-    member1.updateMaxActionbar()
-    member2.updateMaxActionbar()
-    member3.updateMaxActionbar()
-    member2.placeholderEquipWeapon(null)
-    member2.updateMaxActionbar()
-  }*/
 }

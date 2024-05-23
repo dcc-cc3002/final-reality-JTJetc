@@ -69,13 +69,13 @@ class WeaponTest extends munit.FunSuite {
   test("Equipping weapons exceptions"){
     interceptMessage[InvalidWeaponException]("Can not equip magic weapon.Staff to Paladin"){dude1.equipWeapon(TestStaff)}
     dude1.equipWeapon(TestAxe)
-    interceptMessage[UsedWeaponException]("Starter Axe is already being used by someone else"){dude2.equipWeapon(TestAxe)}
+    interceptMessage[UsedWeaponException]("Starter Axe is already being used by someone else"){dude2.equipWeapon(TestAxe)} // trying to equip a weapon being held by someone else
     intercept[NullPointerException](dude1.equipWeapon(null))
   }
 
   test("More Coverage"){
     magic_dude1.equipWeapon(TestWand)
-    magic_dude1.removeWeapon()
+    magic_dude1.removeWeapon() // un-equipping the weapon
     assertEquals(magic_dude1.getHeldWeapon,null)
     assertEquals(dude1.canEquipWeapon(TestWand),false)
     assertEquals(magic_dude1.canEquipWeapon(TestAxe),false)
