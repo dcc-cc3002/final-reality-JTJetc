@@ -47,6 +47,10 @@ certain profession.
 - Added methods for un-equipping weapons and made sure to update the max action bar after equipping and
 un-equipping weapons.
 - Also added method to weapons to get the owner for comparing.
+### Partial Assigment 4
+- I already had implemented un-equipping weapons, max of 3 party members, and enemies can only attack players,
+and players can only attack enemies. But still added a bit of more code to make it look better and even added 
+more tests.
 
 This project is licensed under the
 [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).

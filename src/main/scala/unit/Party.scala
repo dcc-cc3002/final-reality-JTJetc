@@ -21,14 +21,15 @@ class Party(protected var member1: ICharacter = new DummyCharacter,
   /** Adds a member to one of the party slots
    *
    * Check member slots from 1 to 3, and if a null profession is found, it means it has a Dummy to replace with a real character.
-   * Otherwise does nothing.
    *
    * @param who The character to be added to the party.
+   * @throws FullPartyException When trying to add someone when party is full. (max 3 members)
    */
   def add(who: ICharacter): Unit = {
     if (member1.profession == null) member1 = who
     else if (member2.profession == null) member2 = who
     else if (member3.profession == null) member3 = who
+    else throw new FullPartyException("Party is already full")
   }
 
   /** Determines if the party is alive.

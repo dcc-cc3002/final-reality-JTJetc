@@ -60,6 +60,9 @@ class CharacterTest extends munit.FunSuite {
     assertEquals(AliveParty.isAlive,true)
     assertEquals(DeathParty.isAlive,false)
   }
+  test("Full party exception"){
+    interceptMessage[FullPartyException]("Party is already full"){AliveParty.add(weak_character)}
+  }
   test("Enemies"){
     assertEquals(some_enemy.getDefense,3)
     assertEquals(some_enemy.maxLife,5)
