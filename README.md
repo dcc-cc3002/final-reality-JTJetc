@@ -51,6 +51,19 @@ un-equipping weapons.
 - I already had implemented un-equipping weapons, max of 3 party members, and enemies can only attack players,
 and players can only attack enemies. But still added a bit of more code to make it look better and even added 
 more tests.
+### Final Assigment 2
+- Added a MagicWeapon trait between Weapon and AbstractMagicWeapon, for type checking if owner has wand or staff,
+but ended up not using it. (maybe useful in the future)
+- Added a MagicAlly, Effect, DarkSpell, and LightSpell traits for type checking.
+- MagicCharacter now has 3 methods for casting a spells, with each checking most conditions for a valid cast;
+this was done because of the nature of the spells. (dark spells only target enemies, offensive light spells
+target enemies, and the only light spell that targets allies is heal)
+- Each spell is their own class, where they each has their method which checks mana conditions and calls
+methods for hurting enemies, inflicting a status effect, and healing (even if its in general units, because
+MagicCharacter method Only allows healing an ally, the called method in Heal only can get an ally)
+- The effect trait and package is made only for the future where the method in enemies to apply the status is
+fully implemented.
+- In another note, this was probably the hardest requirements to implement (not long, just tough)
 
 This project is licensed under the
 [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).

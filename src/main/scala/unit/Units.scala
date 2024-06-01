@@ -24,5 +24,6 @@ trait Units {
   def getLife : Int
   /** Returns the defense of the unit */
   def getDefense : Int
-
+  /** Method called when healing*/
+  def heal() : Unit
 }

@@ -61,4 +61,10 @@ abstract class AbstractCharacter extends ICharacter {
       heldweapon = weapon
       updateMaxActionbar()
   }
+  /** Method used for healing 30% of characters maxLife */
+  def heal() : Unit = {
+    var howMuch : Int = maxLife * 3 / 10
+    life += howMuch
+    if(life > maxLife) life = maxLife
+  }
 }

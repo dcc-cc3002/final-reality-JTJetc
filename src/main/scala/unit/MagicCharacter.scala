@@ -2,6 +2,8 @@ package unit
 
 import exceptions.Require
 import profession.Profession
+import spells.{DarkSpell, InvalidSpellException, LightSpell}
+import weapon.MagicWeapon
 
 /** Class representing a Magic Character.
  *
@@ -12,20 +14,20 @@ import profession.Profession
  * @param defense The defense of the magic character.
  * @param weight The weight of the magic character.
  * @param profession The profession of the magic character.
- * @param mana The mana of the magic character.
+ * @param mana The mana and maxMana of the magic character.
  *
  * @constructor Creates a new Magic Character.
  *
  * @author Javier Torres
  * @since 1.0.0
- * @version 1.0.4
+ * @version 1.0.5
  */
 class MagicCharacter(val name: String = "Unknown",
                      protected var life: Int = 0,
                      protected var defense: Int = 0,
                      val weight: Double = 0.1,
                      val profession: Profession,
-                     private var mana:Int=1) extends AbstractCharacter {
+                     private var mana:Int=1) extends AbstractCharacter with MagicAlly{
   /** Alternative constructor if one where to skip defense, defaulting it to 0 */
   def this(x: String, l: Int, w: Double, p: Profession, m: Int) = {
     this(x, l, 0, w, p, m)
@@ -69,8 +71,35 @@ class MagicCharacter(val name: String = "Unknown",
     else actionbar = 0
   }
 
-  /** Returns the mana of the character */
   def getMana: Int = {
     mana
+  }
+
+  def loseMana(n: Int): Unit = {
+    mana -= n
+  }
+
+  def castSpell(spell:DarkSpell,target:Enemy) : Unit = { //Deal damage and chance of status effect
+    if(profession.name != "Black Mage") throw new InvalidSpellException("White Mage can't perform Dark Magic")
+    else if(heldweapon == null) throw new InvalidSpellException("Need a magic weapon for casting")
+    else if(heldweapon.magic_damage == 0) throw new InvalidSpellException("Need a magic weapon for casting")
+    else if(!target.isAlive) throw new InvalidSpellException("Can't cast on death target")
+    else spell.castSpell(this,heldweapon.magic_damage,target)
+  }
+  def castSpell(spell:LightSpell,target:Enemy) : Unit = { //Inflict status effect
+    if(profession.name != "White Mage") throw new InvalidSpellException("Black Mage can't perform Light Magic")
+    else if(spell.name == "Heal") throw new InvalidSpellException(s"Can't Heal an enemy")
+    else if(heldweapon == null) throw new InvalidSpellException("Need a magic weapon for casting spells")
+    else if(heldweapon.magic_damage == 0) throw new InvalidSpellException("Need a magic weapon for casting spells")
+    else if(!target.isAlive) throw new InvalidSpellException("Can't cast on death target")
+    else spell.castSpell(this,heldweapon.magic_damage,target)
+  }
+  def castSpell(spell:LightSpell,target:ICharacter) : Unit = { //Heal ally
+    if(profession.name != "White Mage") throw new InvalidSpellException("Black Mage can't perform Light Magic")
+    else if(spell.name != "Heal") throw new InvalidSpellException(s"Can't cast ${spell.name} on ally")
+    else if(heldweapon == null) throw new InvalidSpellException("Need a magic weapon for casting heals")
+    else if(heldweapon.magic_damage == 0) throw new InvalidSpellException("Need a magic weapon for casting spells")
+    else if(!target.isAlive) throw new InvalidSpellException("Can't heal a death ally")
+    else spell.castSpell(this,heldweapon.magic_damage,target)
   }
 }

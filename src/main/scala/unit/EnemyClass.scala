@@ -1,5 +1,6 @@
 package unit
 
+import effect.Effect
 import exceptions.Require
 
 /** Class representing an Enemy.
@@ -64,4 +65,14 @@ class EnemyClass(val name: String,
     life -= howMuchWillItHurt
     if(life < 0) life = 0
   }
+  def hurtBySpell(md:Int) : Unit = {
+    life -= md
+    if(life < 0) life = 0
+  }
+  def inflictStatusEffect(what: Effect): Unit = {
+    //code that implements inflicting status effect to enemy
+  }
+
+  /** Method that may be used for strong enemies healing or something */
+  def heal(): Unit = { }
 }

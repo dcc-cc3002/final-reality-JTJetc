@@ -1,7 +1,8 @@
 package combatsystem
-import profession.{BlackMage, Warrior}
+import profession.{BlackMage, Warrior, WhiteMage}
 import unit.{Character, DummyCharacter, Enemy, EnemyClass, MagicCharacter, Party}
 import weapon.{Sword, Wand}
+import spells.{Fire, Heal, InvalidSpellException, Paralysis, Poison, Thunder}
 
 import scala.collection.mutable.ListBuffer
 
@@ -9,6 +10,7 @@ class CombatTest extends munit.FunSuite {
   var member1 : Character = _
   var member2 : MagicCharacter = _
   var member3 : Character = _
+  var member4 : MagicCharacter = _
   var enemy1 : EnemyClass = _
   var enemy2 : EnemyClass = _
   var enemy3 : EnemyClass = _
@@ -22,8 +24,10 @@ class CombatTest extends munit.FunSuite {
     member1 = new Character("Dude",100,5,50.0,new Warrior)
     member1.equipWeapon(new Sword("Test",50,12.5,new DummyCharacter))
     member2 = new MagicCharacter("Another Dude",100,1,40.25,new BlackMage, 500)
-    member2.equipWeapon(new Wand("Test2",10,12.5,new DummyCharacter, 50))
+    member2.equipWeapon(new Wand("Test2",10,12.5,new DummyCharacter, 25))
     member3 = new Character("Dude with no weapon",100,5,50.0,new Warrior)
+    member4 = new MagicCharacter("Another Dude",100,1,40.25,new WhiteMage, 500)
+    member4.equipWeapon(new Wand("Test3",10,12.5,new DummyCharacter, 50))
     enemy1 = new EnemyClass("Foo",20,10,3,10.0)
     enemy2 = new EnemyClass("Another Foo",30,10,5,10.5)
     enemy3 = new EnemyClass("Foo III",45,12,30,12.5)
@@ -62,7 +66,7 @@ class CombatTest extends munit.FunSuite {
     if(TestTurns.anyTurn) assertEquals(TestTurns.getTurn,member1)
     assertEquals(TestTurns.anyTurn,false)
   }
-  test("Attack Tests"){ // characters cant attack enemies, and enemies cant attack characters
+  test("Attack Tests"){ // enemies cant attack enemies, and characters cant attack characters
     member1.attackAnEnemy(enemy1)
     assertEquals(enemy1.getLife,0)
     member1.attackAnEnemy(enemy3)
@@ -78,5 +82,66 @@ class CombatTest extends munit.FunSuite {
     assertEquals(member2.getLife,1)
     enemy6.attackACharacter(member2)
     assertEquals(member2.getLife,0)
+  }
+
+  test("Spells"){ // member2 is Black Mage, member4 is White Mage
+    assertEquals(member2.getMana,500)
+    assertEquals(enemy2.getLife,30)
+    assertEquals(enemy6.getLife,250)
+
+    member2.castSpell(new Fire,enemy2)
+    member2.castSpell(new Thunder,enemy6)
+
+    assertEquals(member2.getMana,465)
+    assertEquals(enemy2.getLife,5)
+    assertEquals(enemy6.getLife,225)
+
+    assertEquals(member4.getMana,500)
+    assertEquals(member2.getLife,100)
+    assertEquals(member4.getLife,100)
+
+    enemy2.attackACharacter(member2)
+    enemy6.attackACharacter(member4)
+    assertEquals(member2.getLife,91)
+    assertEquals(member4.getLife,1)
+    member4.castSpell(new Poison,enemy2)
+    member4.castSpell(new Paralysis,enemy6)
+    member4.castSpell(new Heal,member2)
+    member4.castSpell(new Heal,member4)
+
+    assertEquals(member4.getMana,415)
+    assertEquals(member2.getLife,100)
+    assertEquals(member4.getLife,31)
+  }
+  test("Spell exceptions"){ // Black magic cant target allies, only enemies
+    //member2 is a Black Mage and cant perform poison, which is light magic
+    interceptMessage[InvalidSpellException]("Black Mage can't perform Light Magic"){member2.castSpell(new Poison, enemy4)}
+    //member4 is a White Mage and cant perform fire, which is dark magic
+    interceptMessage[InvalidSpellException]("White Mage can't perform Dark Magic"){member4.castSpell(new Fire,enemy6)}
+    //White Mage cant cast offensive light magic on ally (in this case itself)
+    interceptMessage[InvalidSpellException]("Can't cast Poison on ally"){member4.castSpell(new Poison,member4)}
+    //White mage cant cast heal on enemy
+    interceptMessage[InvalidSpellException]("Can't Heal an enemy"){member4.castSpell(new Heal,enemy6)}
+
+    enemy6.attackACharacter(member2)
+    enemy6.attackACharacter(member2)
+    //member2 dies, and cant be healed
+    interceptMessage[InvalidSpellException]("Can't heal a death ally"){member4.castSpell(new Heal,member2)}
+
+    member2.castSpell(new Thunder,enemy1)
+    //enemy1 dies, and cant be targeted by other spells
+    interceptMessage[InvalidSpellException]("Can't cast on death target"){member2.castSpell(new Thunder,enemy1)}
+
+    member2.removeWeapon()
+    //with no weapon, member2 cant cast a spell
+    interceptMessage[InvalidSpellException]("Need a magic weapon for casting"){member2.castSpell(new Fire, enemy6)}
+    member2.equipWeapon(new Sword("Wrong Weapon",10,5.5,new DummyCharacter))
+    //member2 equipping a Sword still cant perform a spell
+    interceptMessage[InvalidSpellException]("Need a magic weapon for casting"){member2.castSpell(new Fire, enemy6)}
+
+    member4.loseMana(member4.getMana-10)
+    assertEquals(member4.getMana,10)
+    //member4 loses almost all mana, then tries to cast a heal on itself, but there is not enough (10 out of 15)
+    interceptMessage[InvalidSpellException]("10 mana is not enough for heal"){member4.castSpell(new Heal,member4)}
   }
 }

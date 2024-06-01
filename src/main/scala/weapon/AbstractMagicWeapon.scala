@@ -12,8 +12,10 @@ import unit.{DummyCharacter, ICharacter}
  * @since 1.0.0
  * @version 1.0.1
  */
-abstract class AbstractMagicWeapon(val magic_damage: Int) extends Weapon{
-Require.Stat(magic_damage,"Magic damage") atLeast 0
+abstract class AbstractMagicWeapon(val magic_damage: Int) extends MagicWeapon {
+  Require.Stat(damage,"damage") atLeast 0
+  require(weight>0,"number must be greater than zero")
+  Require.Stat(magic_damage,"Magic damage") atLeast 0
 
   def getOwner : ICharacter = {
     if(owner.profession == null) null

@@ -36,4 +36,5 @@ trait ICharacter extends Units{
    * @throws NullPointerException If trying to equip a null weapon
    * @throws UsedWeaponException If the weapon is already being used by someone else */
   def equipWeapon(weapon:Weapon) : Unit
+
 }

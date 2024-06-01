@@ -4,13 +4,14 @@ import unit.ICharacter
 
 /** Trait represents common attributes shared by all weapons.
  *
- * Used by [[weapon.AbstractCommonWeapon]] and [[weapon.AbstractMagicWeapon]]
+ * Used by [[weapon.AbstractCommonWeapon]] and [[weapon.MagicWeapon]]
  */
 trait Weapon {
   val name: String
   val damage: Int
   val weight: Double
   protected var owner: ICharacter
+  val magic_damage : Int
 
   /** Returns the owner of the weapon; returns null if no owner (DummyCharacter) */
   def getOwner : ICharacter
