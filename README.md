@@ -65,5 +65,9 @@ MagicCharacter method Only allows healing an ally, the called method in Heal onl
 fully implemented.
 - In another note, this was probably the hardest requirements to implement (not long, just tough)
 
+## 3° Assigment
+### Partial Assigment 5
+- ![Game State Flowchart](resources/FinalRealityFlowchart-drawio.png)
+
 This project is licensed under the
 [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
