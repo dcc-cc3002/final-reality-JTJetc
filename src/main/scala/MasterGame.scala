@@ -42,9 +42,9 @@ class MasterGame { // Main should create this and run it
   /** In development run method */
   def run(): Unit = {
     val controller: GameController = new GameController(new Programmer(StarterParty,StarterEnemies))
-    /*while (!controller.hasFinished()) { //tentative approach
+    /*while (!controller.battleEnd()) { // tentative approach to mimic
       controller.handleInput()
       controller.update()
-    }*/
+    } */
   }
 }
