@@ -10,6 +10,8 @@ class GameController(private val Programmer : Programmer) {
     state = newState
   }
 
+  def progressGame() : Unit = state.progressGame()
+
   def battleEnd() : Boolean = state.battleEnd()
 
 }

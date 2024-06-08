@@ -68,7 +68,9 @@ fully implemented.
 ## 3° Assigment
 ### Partial Assigment 5
 - Ideal Game State Flowchart: ![Game State Flowchart](resources/FinalRealityFlowchart-drawio.png)
-- Started adding the controllers and game states.
+- Started adding the controllers and game states (many new files because of the amount of states).
+- Many lines of "new" code had to be removed because it would not work, until i found the current tentative 
+and hopefully functional approach.
 
 This project is licensed under the
 [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
