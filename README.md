@@ -67,7 +67,8 @@ fully implemented.
 
 ## 3° Assigment
 ### Partial Assigment 5
-- ![Game State Flowchart](resources/FinalRealityFlowchart-drawio.png)
+- Ideal Game State Flowchart: ![Game State Flowchart](resources/FinalRealityFlowchart-drawio.png)
+- Started adding the controllers and game states.
 
 This project is licensed under the
 [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
