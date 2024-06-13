@@ -1,6 +1,7 @@
 package unit
 
 import scala.collection.mutable.ListBuffer
+import scala.util.Random
 
 /** Class representing a Party.
  *
@@ -12,7 +13,7 @@ import scala.collection.mutable.ListBuffer
  * @constructor Creates a new Party.
  * @author Javier Torres
  * @since 1.0.0
- * @version 1.0.2
+ * @version 1.1
  */
 class Party(protected var member1: ICharacter = new DummyCharacter,
             protected var member2: ICharacter = new DummyCharacter,
@@ -82,5 +83,17 @@ class Party(protected var member1: ICharacter = new DummyCharacter,
     memberList += member2
     memberList += member3
     memberList
+  }
+
+  def becomeAttacked(enemy : Enemy): Unit = {
+    val who = Random.between(0,3) // random 0 to 2 Int
+    who match {
+      case 0 => if(member1.profession == null || !member1.isAlive){becomeAttacked(enemy)} // re-roll if attacking dummy or death member
+                else {enemy.attackACharacter(member1)}
+      case 1 => if(member2.profession == null || !member2.isAlive){becomeAttacked(enemy)} // re-roll if attacking dummy or death member
+                else {enemy.attackACharacter(member2)}
+      case 2 => if(member3.profession == null || !member3.isAlive){becomeAttacked(enemy)} // re-roll if attacking dummy or death member
+                else {enemy.attackACharacter(member3)}
+    }
   }
 }

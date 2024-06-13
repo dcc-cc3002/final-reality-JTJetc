@@ -68,9 +68,25 @@ fully implemented.
 ## 3° Assigment
 ### Partial Assigment 5
 - Ideal Game State Flowchart: ![Game State Flowchart](resources/FinalRealityFlowchart-drawio.png)
-- Started adding the controllers and game states (many new files because of the amount of states).
+- Started adding controllers and game states (many new files because of the amount of states).
 - Many lines of "new" code had to be removed because it would not work, until i found the current tentative 
 and hopefully functional approach.
+- The idea is when Main runs, a MasterGame class is created and run, which handles creating most needed stuff
+for the entire game and a GameController with battle needed parameters, handled by States, so a while cycle in
+MasterGame calls the methods for the GameController to make the game progress. Each of the many states handle
+different aspects of the various battle stages i anticipated for the game.
+- ### Partial Assigment 6
+- Effects are applied on the enemy with double dispatch; each effect adds itself in a determined position
+in a list in the enemy. EnemyState runs methods and checks all status effect on the enemy; 
+When checking the status in the enemy, a single effect returning false in its effect method means that the
+enemy cant move or got killed by the status effect, skipping its turn.
+- Just realized a BIG issue: The programmer manages both enemies and characters for getting the turn order,
+which returns a "Units" type object that can represent both, however for all the logic for attacking they
+behave differently, and "Units" type is not recognized when needing a character or enemy. Tried using
+Either(Enemy,ICharacter) but that causes more issues, so instead created methods in Units that EnemyClass and
+AbstractCharacter implement by either throwing an error, or returning the object itself (this) which
+in practical use means "transforming" the type from Units to either Enemy or ICharacter (following logic),
+recovering the needed type for the combat logic to work. (No need of asInstanceOf or casting)
 
 This project is licensed under the
 [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).

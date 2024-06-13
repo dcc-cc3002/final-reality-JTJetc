@@ -2,6 +2,8 @@ package unit
 
 import effect.Effect
 
+import scala.collection.mutable.ArrayBuffer
+
 /** Trait mainly used for type in constructors.
  * Also provides a damage value to enemies.
  * Used by [[unit.EnemyClass]]
@@ -25,4 +27,12 @@ trait Enemy extends Units{
   /** Method that gets called when a spell inflicts a status effect to an enemy
    * @param what The status effect to be inflicted */
   def inflictStatusEffect(what:Effect) : Unit
+
+  /** Method to attack a random member in the allies party
+   * @param party The characters party to attack */
+  def attackRandom(party : IParty) : Unit
+
+  /** List of the status effects on this enemy, starts with 3 slots with no status
+   * (slots are for the 3 possible effects) */
+  val Status : ArrayBuffer[Effect]
 }

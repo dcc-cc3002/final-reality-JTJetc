@@ -1,7 +1,9 @@
 package unit
 
-import effect.Effect
+import effect._
 import exceptions.Require
+
+import scala.collection.mutable.ArrayBuffer
 
 /** Class representing an Enemy.
  *
@@ -13,7 +15,7 @@ import exceptions.Require
  * @constructor Creates a new Enemy.
  * @author Javier Torres
  * @since 1.0.0
- * @version 1.0.4
+ * @version 1.1
  */
 class EnemyClass(val name: String,
                  protected var life:Int,
@@ -75,4 +77,15 @@ class EnemyClass(val name: String,
 
   /** Method that may be used for strong enemies healing or something */
   def heal(): Unit = { }
+
+  def attackRandom(party: IParty): Unit = {
+    party.becomeAttacked(this)
+  }
+
+  val Status : ArrayBuffer[Effect] = ArrayBuffer[Effect](new NoEffect,new NoEffect,new NoEffect)
+
+  def isThisAnAllyTurn: Boolean = false
+
+  def transformThisToCharacter() : ICharacter = { throw new AssertionError("Enemy is not Character") }
+  def transformThisToEnemy() : Enemy = { this }
 }

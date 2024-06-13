@@ -1,9 +1,15 @@
 package spells
 
 import unit.{Enemy, MagicAlly}
+import effect._
 
 import scala.util.Random
 
+/** Class representing Fire dark spell
+ * @author Javier Torres
+ * @since 1.0.8
+ * @version 1.1
+ */
 class Fire extends DarkSpell {
   /** Name of the spell */
   val name = "Fire"
@@ -20,7 +26,7 @@ class Fire extends DarkSpell {
     target.hurtBySpell(md)
     val rand = Random.nextDouble() //0 to 1 double
     if(rand <= 0.2) {
-      //target.inflictStatusEffect(new Burning(md))
+      target.inflictStatusEffect(new BurningEffect(md))
     }
   }
 }

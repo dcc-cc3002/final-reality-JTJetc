@@ -1,7 +1,13 @@
 package spells
 
 import unit.{MagicAlly, Units}
+import effect._
 
+/** Class representing Paralysis dark spell
+ * @author Javier Torres
+ * @since 1.0.8
+ * @version 1.1
+ */
 class Paralysis extends LightSpell {
   /** Name of the spell */
   val name = "Paralysis"
@@ -15,6 +21,6 @@ class Paralysis extends LightSpell {
   def castSpell(owner:MagicAlly,md:Int,target:Units) : Unit ={
     if(owner.getMana < 25) throw new InvalidSpellException(s"${owner.getMana} mana is not enough for spell")
     owner.loseMana(25)
-    //target.inflictStatusEffect(new Paralysis)
+    target.inflictStatusEffect(new ParalysisEffect)
   }
 }

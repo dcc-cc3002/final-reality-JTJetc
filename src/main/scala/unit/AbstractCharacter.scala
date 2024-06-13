@@ -1,5 +1,6 @@
 package unit
 
+import effect.Effect
 import weapon.{InvalidWeaponException, UsedWeaponException, Weapon}
 
 /** Abstract class representing Characters.
@@ -8,7 +9,7 @@ import weapon.{InvalidWeaponException, UsedWeaponException, Weapon}
  *
  * @author Javier Torres
  * @since 1.0.0
- * @version 1.0.3
+ * @version 1.1
  */
 abstract class AbstractCharacter extends ICharacter {
   /** The weapon this character is holding.
@@ -16,11 +17,7 @@ abstract class AbstractCharacter extends ICharacter {
    * Starts by default empty, meaning no held weapon.
    */
   protected var heldweapon: Weapon = null
-  /*
-  /** Placeholder method to equip a weapon */
-  def placeholderEquipWeapon(weapon:Weapon) : Unit ={
-    heldweapon = weapon
-  }*/
+
   /** Returns the equipped weapon */
   def getHeldWeapon : Weapon = heldweapon
 
@@ -67,4 +64,11 @@ abstract class AbstractCharacter extends ICharacter {
     life += howMuch
     if(life > maxLife) life = maxLife
   }
+
+  def inflictStatusEffect(what: Effect): Unit = { } // allys dont use this method
+
+  def isThisAnAllyTurn: Boolean = true
+
+  def transformThisToCharacter() : ICharacter = { this }
+  def transformThisToEnemy() : Enemy = { throw new AssertionError("Character is not Enemy") }
 }

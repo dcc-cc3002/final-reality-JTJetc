@@ -1,7 +1,13 @@
 package spells
 
 import unit.{MagicAlly, Units}
+import effect._
 
+/** Class representing Poison light spell
+ * @author Javier Torres
+ * @since 1.0.8
+ * @version 1.1
+ */
 class Poison extends LightSpell {
   /** Name of the spell */
   val name = "Poison"
@@ -15,6 +21,6 @@ class Poison extends LightSpell {
   def castSpell(owner:MagicAlly,md:Int,target:Units) : Unit ={
     if(owner.getMana < 30) throw new InvalidSpellException(s"${owner.getMana} mana is not enough for spell")
     owner.loseMana(30)
-    //target.inflictStatusEffect(new Poison(md))
+    target.inflictStatusEffect(new PoisonEffect(md))
   }
 }

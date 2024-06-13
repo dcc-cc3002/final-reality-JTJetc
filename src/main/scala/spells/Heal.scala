@@ -2,6 +2,11 @@ package spells
 
 import unit.{MagicAlly, Units}
 
+/** Class representing Heal light spell
+ * @author Javier Torres
+ * @since 1.0.8
+ * @version 1.1
+ */
 class Heal extends LightSpell {
   /** Name of the spell */
   val name = "Heal"

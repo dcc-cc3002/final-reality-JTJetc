@@ -8,7 +8,7 @@ package profession
  *
  * @author Javier Torres
  * @since 1.0.0
- * @version 1.0.0
+ * @version 1.0.1
  */
 class BlackMage extends AbstractProfession("Black Mage") {
 

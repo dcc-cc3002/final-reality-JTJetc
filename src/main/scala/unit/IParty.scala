@@ -14,4 +14,7 @@ trait IParty {
   def remove(who:ICharacter):Unit
   def anyTurnForProgrammer(inlist:ListBuffer[Units]): ListBuffer[Units]
   def getMembers : ListBuffer[ICharacter]
+
+  /** Method called when an enemy attacks a random member of the party */
+  def becomeAttacked(enemy : Enemy) : Unit
 }

@@ -88,7 +88,7 @@ class Programmer(private var party: IParty, private val enemies: ListBuffer[Enem
   */
  def getTurn: Units = {
   readyList = readyList.sortWith(_.getActionBar < _.getActionBar) //this way, the last one in list is the one with priority to have a turn
-  val result: Units = readyList.last //character or enemy to return
+  val result = readyList.last //character or enemy to return
   readyList.last.setActionBar(0)
   readyList.dropRightInPlace(1)
   result
