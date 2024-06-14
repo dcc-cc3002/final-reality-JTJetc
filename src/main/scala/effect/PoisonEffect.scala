@@ -25,4 +25,5 @@ class PoisonEffect(private val magicDamage : Int) extends AbstractEffect{
     who.Status(1) = this
   }
 
+  override def positionInEnemy: Int = 1
 }

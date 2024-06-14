@@ -15,8 +15,13 @@ import scala.collection.mutable.ArrayBuffer
 class NeutralState extends GameState {
 
   override def progressGame(Programmer: Programmer, weaponsList: ArrayBuffer[Weapon], darkSpells: ArrayBuffer[DarkSpell], lightSpells: ArrayBuffer[LightSpell], GameController: GameController): Unit = {
-    if(!Programmer.anyTurn) { changeState(GameController,new ProgressActionBarState) }
+
+
+    if(!Programmer.anyTurn) {
+      changeState(GameController,new ProgressActionBarState)
+    }
     else {
+      println()
       val individual = Programmer.getTurn // returns "Units" type object
       if(individual.isThisAnAllyTurn) { // if true, this individual is a ICharacter
         println(individual.name + " Turn")

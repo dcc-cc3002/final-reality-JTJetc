@@ -26,7 +26,6 @@ abstract class GameState extends GameStateTrait{
   /** If i forget to override this in a state, this throws an error */
   def progressGame(Programmer : Programmer,weaponsList : ArrayBuffer[Weapon],darkSpells : ArrayBuffer[DarkSpell],lightSpells : ArrayBuffer[LightSpell], GameController: GameController) : Unit = error()
 
-  def handleInput(controller: GameController): Unit = { }
 
   /** Method that uses StdIn to read input to integer */
   protected def getInput: Int = {

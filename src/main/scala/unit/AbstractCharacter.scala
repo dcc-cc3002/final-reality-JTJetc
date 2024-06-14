@@ -71,4 +71,8 @@ abstract class AbstractCharacter extends ICharacter {
 
   def transformThisToCharacter() : ICharacter = { this }
   def transformThisToEnemy() : Enemy = { throw new AssertionError("Character is not Enemy") }
+
+  /** Method to recover a MagicAlly type from ICharacter
+   * @throws AssertionError If trying to make a regular character a magic one  */
+  def transformThisToMagicAlly() : MagicAlly = { throw new AssertionError("Regular character is not magical") }
 }

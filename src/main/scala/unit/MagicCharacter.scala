@@ -20,7 +20,7 @@ import weapon.MagicWeapon
  *
  * @author Javier Torres
  * @since 1.0.0
- * @version 1.0.5
+ * @version 1.1
  */
 class MagicCharacter(val name: String = "Unknown",
                      protected var life: Int = 0,
@@ -102,4 +102,6 @@ class MagicCharacter(val name: String = "Unknown",
     else if(!target.isAlive) throw new InvalidSpellException("Can't heal a death ally")
     else spell.castSpell(this,heldweapon.magic_damage,target)
   }
+
+  override def transformThisToMagicAlly() : MagicAlly = { this }
 }

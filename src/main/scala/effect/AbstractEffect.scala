@@ -15,4 +15,5 @@ abstract class AbstractEffect extends Effect {
     else false
   }
 
+  def positionInEnemy: Int = 100 //
 }

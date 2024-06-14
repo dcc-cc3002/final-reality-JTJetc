@@ -21,4 +21,5 @@ class ParalysisEffect extends AbstractEffect{
     who.Status(0) = this
   }
 
+  override def positionInEnemy: Int = 0
 }

@@ -69,12 +69,12 @@ fully implemented.
 ### Partial Assigment 5
 - Ideal Game State Flowchart: ![Game State Flowchart](resources/FinalRealityFlowchart-drawio.png)
 - Started adding controllers and game states (many new files because of the amount of states).
-- Many lines of "new" code had to be removed because it would not work, until i found the current tentative 
+- Many lines of "new" code had to be removed because it would not work, until I found the current tentative 
 and hopefully functional approach.
 - The idea is when Main runs, a MasterGame class is created and run, which handles creating most needed stuff
 for the entire game and a GameController with battle needed parameters, handled by States, so a while cycle in
 MasterGame calls the methods for the GameController to make the game progress. Each of the many states handle
-different aspects of the various battle stages i anticipated for the game.
+different aspects of the various battle stages I anticipated for the game.
 - ### Partial Assigment 6
 - Effects are applied on the enemy with double dispatch; each effect adds itself in a determined position
 in a list in the enemy. EnemyState runs methods and checks all status effect on the enemy; 

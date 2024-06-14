@@ -53,7 +53,6 @@ class MasterGame { // Main should create this and run it
   def run(): Unit = {
     val controller: GameController = new GameController(new Programmer(StarterParty,StarterEnemies),StarterWeaponsList,DarkSpellsList,LightSpellsList)
     while (!controller.battleEnd()) {
-      controller.handleInput()
       controller.progressGame()
     }
   }

@@ -27,8 +27,6 @@ class GameController(private val Programmer : Programmer,
     state = newState
   }
 
-  /** Method to handle inputs (State dependant) */
-  def handleInput(): Unit = state.handleInput(this)
 
   /** Method to progress the game (State dependant) */
   def progressGame() : Unit = state.progressGame(Programmer,weaponsList,darkSpells,lightSpells,this)
