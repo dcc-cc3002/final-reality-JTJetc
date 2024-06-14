@@ -8,5 +8,8 @@ trait LightSpell {
   /** Name of the spell */
   val name : String
   /** The method to cast the spell */
-  def castSpell(owner:MagicAlly,md:Int,target:Units) : Unit //Light Magic does not use magic_damage stat
+  def castSpell(owner:MagicAlly,md:Int,target:Units) : Unit
+
+  /** Mana Cost */
+  val cost : Int
 }

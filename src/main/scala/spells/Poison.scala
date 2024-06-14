@@ -11,6 +11,7 @@ import effect._
 class Poison extends LightSpell {
   /** Name of the spell */
   val name = "Poison"
+  val cost = 30
   /** Poison an enemy
    *
    * 30 mana cost

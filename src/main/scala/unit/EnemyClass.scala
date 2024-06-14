@@ -49,7 +49,7 @@ class EnemyClass(val name: String,
    * @param k Amount to change actionbar
    */
   def setActionBar(k: Int): Unit = {
-    if(k != 0) actionbar += k
+    if(k != 0 && isAlive) actionbar += k
     else actionbar = 0
   }
 

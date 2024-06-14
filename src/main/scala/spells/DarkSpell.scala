@@ -9,4 +9,7 @@ trait DarkSpell {
   val name : String
   /** The method to cast the spell */
   def castSpell(owner:MagicAlly,md:Int,target:Enemy) : Unit
+
+  /** Mana Cost */
+  val cost : Int
 }

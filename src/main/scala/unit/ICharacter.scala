@@ -37,4 +37,5 @@ trait ICharacter extends Units{
    * @throws UsedWeaponException If the weapon is already being used by someone else */
   def equipWeapon(weapon:Weapon) : Unit
 
+  def transformThisToMagicAlly() : MagicAlly
 }

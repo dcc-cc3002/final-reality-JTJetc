@@ -18,7 +18,7 @@ class ProgressActionBarState extends GameState {
 
     print(".")
     Programmer.step()
-
+    changeState(GameController,new NeutralState)
   }
 
 }

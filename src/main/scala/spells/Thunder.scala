@@ -13,6 +13,7 @@ import scala.util.Random
 class Thunder extends DarkSpell {
   /** Name of the spell */
   val name = "Thunder"
+  val cost = 20
   /** Hurts and enemy (magic_damage) and 30% to paralyse
    *
    * 20 mana cost

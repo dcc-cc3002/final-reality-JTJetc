@@ -24,7 +24,7 @@ class NeutralState extends GameState {
       println()
       val individual = Programmer.getTurn // returns "Units" type object
       if(individual.isThisAnAllyTurn) { // if true, this individual is a ICharacter
-        println(individual.name + " Turn")
+        println(individual.name + " the " + individual.transformThisToCharacter().profession.name + " turn")
         changeState(GameController, new PlayerIdleState(individual.transformThisToCharacter())) //recovering type
       }
       else { // this individual is an Enemy

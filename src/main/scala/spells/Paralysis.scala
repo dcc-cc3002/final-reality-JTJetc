@@ -11,6 +11,7 @@ import effect._
 class Paralysis extends LightSpell {
   /** Name of the spell */
   val name = "Paralysis"
+  val cost = 25
   /** Paralyse an enemy
    *
    * 25 mana cost

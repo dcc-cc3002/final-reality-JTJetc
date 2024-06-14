@@ -28,4 +28,6 @@ trait MagicAlly {
    * @throws InvalidSpellException When some condition is not met for said spell
    * */
   def castSpell(spell:LightSpell,target:ICharacter) : Unit
+
+  def transformThisToCharacter() : ICharacter
 }

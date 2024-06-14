@@ -87,6 +87,9 @@ Either(Enemy,ICharacter) but that causes more issues, so instead created methods
 AbstractCharacter implement by either throwing an error, or returning the object itself (this) which
 in practical use means "transforming" the type from Units to either Enemy or ICharacter (following logic),
 recovering the needed type for the combat logic to work. (No need of asInstanceOf or casting)
+- After many lines of code, the game runs in the console window by number inputs for choosing actions,
+but would like a way to see all units important stats at all times. (Have something in mind, but maybe for later)
+
 
 This project is licensed under the
 [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).

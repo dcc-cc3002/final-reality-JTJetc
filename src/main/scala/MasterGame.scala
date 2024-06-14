@@ -33,7 +33,7 @@ class MasterGame { // Main should create this and run it
   val StarterAxe : Axe = new Axe("Wooden Axe",18,4,new DummyCharacter)
   val StarterBow : Bow = new Bow("Wooden Bow",12,2,new DummyCharacter)
   val StarterStaff : Staff = new Staff("Wooden Staff",15,3,new DummyCharacter,10)
-  val StarterWand : Staff = new Staff("Wooden Wand",10,2,new DummyCharacter,15)
+  val StarterWand : Wand = new Wand("Wooden Wand",10,2,new DummyCharacter,15)
   val StarterWeaponsList : ArrayBuffer[Weapon] = ArrayBuffer[Weapon](StarterSword, StarterAxe, StarterBow, StarterStaff, StarterWand)
 
   val Fire : DarkSpell = new Fire
@@ -44,9 +44,9 @@ class MasterGame { // Main should create this and run it
   val DarkSpellsList : ArrayBuffer[DarkSpell] = ArrayBuffer[DarkSpell](Fire, Thunder)
   val LightSpellsList : ArrayBuffer[LightSpell] = ArrayBuffer[LightSpell](Paralysis,Poison,Heal)
 
-  val StarterEnemy1 : Enemy = new EnemyClass("Foo Follower",50,10,5,65.0)
-  val StarterEnemy2 : Enemy = new EnemyClass("Foo Follower",40,10,4,52.5)
-  val StarterEnemy3 : Enemy = new EnemyClass("Foo Follower",30,10,3,40.0)
+  val StarterEnemy1 : Enemy = new EnemyClass("Foo Follower Top",50,10,5,65.0)
+  val StarterEnemy2 : Enemy = new EnemyClass("Foo Follower Mid",40,10,4,52.5)
+  val StarterEnemy3 : Enemy = new EnemyClass("Foo Follower Low",30,10,3,40.0)
   val StarterEnemies : ListBuffer[Enemy] = ListBuffer[Enemy](StarterEnemy1,StarterEnemy2,StarterEnemy3)
 
   /** Method called by Main to run the game */
