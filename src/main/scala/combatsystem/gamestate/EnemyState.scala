@@ -21,8 +21,10 @@ class EnemyState(enemy:Enemy) extends GameState {
     var canMove : Boolean = true
     for(eff <- enemy.Status){
       canMove &&= eff.effect(enemy)
-      if(eff.end) { enemy.Status(eff.positionInEnemy) = new NoEffect }
     }
+    if(enemy.Status(0).end){ enemy.Status(0) = new NoEffect } //to avoid mutation occurred during iteration exception
+    if(enemy.Status(1).end){ enemy.Status(1) = new NoEffect }
+    if(enemy.Status(2).end){ enemy.Status(2) = new NoEffect }
     if(canMove) { // no status hinders movement capability of enemy
       println(enemy.name + " attacks")
       enemy.attackRandom(Programmer.getParty)

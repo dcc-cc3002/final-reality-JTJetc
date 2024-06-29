@@ -14,6 +14,4 @@ trait Effect {
 
   /** Method to check if the status effect ended */
   def end : Boolean
-  /** Method to get position in status array */
-  def positionInEnemy : Int
 }

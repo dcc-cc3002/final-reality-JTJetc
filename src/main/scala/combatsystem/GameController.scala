@@ -34,4 +34,6 @@ class GameController(private val Programmer : Programmer,
   /** Method to check if the battle ended (State dependant) */
   def battleEnd() : Boolean = state.battleEnd()
 
+  println("Battle Start")
+
 }

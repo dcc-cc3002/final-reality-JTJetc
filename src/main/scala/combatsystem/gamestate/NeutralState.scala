@@ -23,13 +23,16 @@ class NeutralState extends GameState {
     else {
       println()
       val individual = Programmer.getTurn // returns "Units" type object
-      if(individual.isThisAnAllyTurn) { // if true, this individual is a ICharacter
+      if(individual.isThisAnAllyTurn && individual.isAlive) { // if true, this individual is a ICharacter
         println(individual.name + " the " + individual.transformThisToCharacter().profession.name + " turn")
         changeState(GameController, new PlayerIdleState(individual.transformThisToCharacter())) //recovering type
       }
-      else { // this individual is an Enemy
+      else if(!individual.isThisAnAllyTurn && individual.isAlive){ // this individual is an Enemy
         println(individual.name + " Turn")
         changeState(GameController, new EnemyState(individual.transformThisToEnemy())) //recovering type
+      }
+      else { // selected Unit is dead
+        changeState(GameController,new ProgressActionBarState)
       }
     }
   }

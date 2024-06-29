@@ -24,6 +24,7 @@ class WeaponState(player: ICharacter) extends GameState {
         weaponsList(w).magic_damage + " Mdm | " + weaponsList(w).weight + " Kg")
       if(weaponsList(w).getOwner == null) {  }
       else { print(" [Used by " + weaponsList(w).getOwner.name + "]") }
+      if(weaponsList(w).canEquipTo(player)) { print(" [" + player.profession.name + " compatible]") }
       println()
     }
     val input = getInput

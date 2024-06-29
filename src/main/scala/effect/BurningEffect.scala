@@ -25,5 +25,4 @@ class BurningEffect(private val magicDamage : Int) extends AbstractEffect{
     who.Status(2) = this
   }
 
-  override def positionInEnemy: Int = 2
 }

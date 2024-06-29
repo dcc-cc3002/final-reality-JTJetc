@@ -72,7 +72,7 @@ class EnemyClass(val name: String,
     if(life < 0) life = 0
   }
   def inflictStatusEffect(what: Effect): Unit = {
-    //code that implements inflicting status effect to enemy
+    what.apply(this)
   }
 
   /** Method that may be used for strong enemies healing or something */

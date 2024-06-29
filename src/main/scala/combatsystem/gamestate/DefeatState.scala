@@ -16,9 +16,8 @@ class DefeatState extends GameState {
   override def progressGame(Programmer: Programmer, weaponsList: ArrayBuffer[Weapon], darkSpells: ArrayBuffer[DarkSpell], lightSpells: ArrayBuffer[LightSpell], GameController: GameController): Unit = {
 
   }
-
+  println(" - Defeat - ")
   override def battleEnd(): Boolean = {
-    println(" - Defeat - ")
     true
   }
 }

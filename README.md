@@ -75,7 +75,7 @@ and hopefully functional approach.
 for the entire game and a GameController with battle needed parameters, handled by States, so a while cycle in
 MasterGame calls the methods for the GameController to make the game progress. Each of the many states handle
 different aspects of the various battle stages I anticipated for the game.
-- ### Partial Assigment 6
+### Partial Assigment 6
 - Effects are applied on the enemy with double dispatch; each effect adds itself in a determined position
 in a list in the enemy. EnemyState runs methods and checks all status effect on the enemy; 
 When checking the status in the enemy, a single effect returning false in its effect method means that the
@@ -89,6 +89,11 @@ in practical use means "transforming" the type from Units to either Enemy or ICh
 recovering the needed type for the combat logic to work. (No need of asInstanceOf or casting)
 - After many lines of code, the game runs in the console window by number inputs for choosing actions,
 but would like a way to see all units important stats at all times. (Have something in mind, but maybe for later)
+### Final Assigment 3
+- Added and fixed some code (that I forgot earlier), and added more coverage.
+- Added a Hard battle right after finishing the initial battle.
+- Started testing the possible addition of a side game window for showing battle stats.
+
 
 
 This project is licensed under the

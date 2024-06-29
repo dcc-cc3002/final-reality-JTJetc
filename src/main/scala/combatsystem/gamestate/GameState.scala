@@ -22,7 +22,7 @@ abstract class GameState extends GameStateTrait{
   }
 
   /** Method to throw errors, mainly for me to check when something is wrong in the coding process */
-  protected def error(): Nothing = throw new AssertionError(s"Something is Wrong in ${getClass.getName}")
+  protected def error(): Nothing = throw new AssertionError(s"Something is Wrong")
   /** If i forget to override this in a state, this throws an error */
   def progressGame(Programmer : Programmer,weaponsList : ArrayBuffer[Weapon],darkSpells : ArrayBuffer[DarkSpell],lightSpells : ArrayBuffer[LightSpell], GameController: GameController) : Unit = error()
 
